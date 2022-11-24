@@ -1,0 +1,36 @@
+{
+  "waitr": "Waitr",
+  "supervisor": "Supervisor",
+  "chef": "Chef",
+  "new_member": "New member?",
+  "already_have_account": "Already have account?",
+  "next": "Next",
+  "login": "Login",
+  "signup": "Sign up",
+  "id": "ID",
+  "password": "Password",
+  "confirm_password": "Confirm password",
+  "full_name": "Full name",
+  "mobile_number": "Mobile number",
+  "email_address": "Email address",
+  "menu": "Menu",
+  "drink": "Drinks",
+  "salad": "Salad",
+  "main_dishes": "Main Dishes",
+  "appetizer" : "Appetizer",
+  "field_required" : "This field is required*",
+  "enter_strong_password" : "Enter a stronger password*",
+  "enter_valid_email": "Enter a valid email*",
+  "enter_matched_password": "Enter a matched password*",
+  "this_id_is_already_in_use": "This ID is already in use*",
+  "evaluate_the_service": "Evaluate the service",
+  "update_information": "Update information",
+  "exit": "Exit",
+  "sr": "SR"
+
+
+
+
+
+
+}
