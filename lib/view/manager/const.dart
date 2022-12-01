@@ -1,8 +1,12 @@
 import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:restaurant_managment/translations/locale_keys.g.dart';
+import 'package:restaurant_managment/view/meals/widgets/cart_shopping_widget.dart';
 
 import '../../model/models.dart';
 import '../resourse/assets_manager.dart';
+import '../resourse/color_manager.dart';
 
 class ConstApp {
   static Map<String, dynamic> images = {
@@ -124,4 +128,22 @@ class ConstApp {
       ],
     ),
   ];
+
+  static Map myOrder = {
+    "0": {
+      "id": "1",
+      "table": "A15",
+      "description": "hello please with catchap",
+      "price": "150SR",
+      "date": DateTime.now(),
+    }
+  };
+
+  static Future showModalBottomSheetCart(BuildContext context) {
+    return showModalBottomSheet(
+      context: context,
+      backgroundColor: Colors.transparent,
+      builder: (context)=>CartShoppingWidget()
+    );
+  }
 }

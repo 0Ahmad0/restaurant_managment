@@ -48,6 +48,7 @@ class _TextFiledAppState extends State<TextFiledApp> {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+
       autofocus: widget.autofocus,
       validator: widget.validator??(String? val){
         if(val!.trim().isEmpty) return tr(LocaleKeys.field_required);
@@ -63,6 +64,9 @@ class _TextFiledAppState extends State<TextFiledApp> {
       obscureText: widget.obscureText,
       controller: widget.controller,
       decoration: InputDecoration(
+        hintStyle: TextStyle(
+            fontSize: SizerUtil.width / 32
+        ),
           prefixIcon: Icon(widget.iconData
             , size: SizerUtil.width / 24,
           ),

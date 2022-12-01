@@ -5,11 +5,11 @@ import '/view/resourse/font_manager.dart';
 
 
 TextStyle _getTetxStyle({double? fontSize, FontWeight? fontWeight , Color? color}){
-return TextStyle(fontFamily: FontManager.fontFamilyAR , fontSize: fontSize,fontWeight: fontWeight , color: color);
+return TextStyle(fontFamily: FontManager.fontFamilyAR, fontSize: fontSize,fontWeight: fontWeight , color: color);
 }
 
 ///Regular Style 
-TextStyle getRegularStyle({double? fontSize = FontSize.s12,required Color? color}){
+TextStyle getRegularStyle({double? fontSize = FontSize.s16,required Color? color}){
   return _getTetxStyle(
     fontSize: fontSize,
     fontWeight: FontWegihtManager.regular,
@@ -18,7 +18,7 @@ TextStyle getRegularStyle({double? fontSize = FontSize.s12,required Color? color
 }
 
 ///Bold Style 
-TextStyle getBoldStyle({double? fontSize = FontSize.s12,required Color? color}){
+TextStyle getBoldStyle({double? fontSize = FontSize.s16,required Color? color}){
   return _getTetxStyle(
     fontSize: fontSize,
     fontWeight: FontWegihtManager.bold,
@@ -27,7 +27,7 @@ TextStyle getBoldStyle({double? fontSize = FontSize.s12,required Color? color}){
 }
 
 ///SemiBold Style 
-TextStyle getSemiBoldStyle({double? fontSize = FontSize.s12,required Color? color}){
+TextStyle getSemiBoldStyle({double? fontSize = FontSize.s16,required Color? color}){
   return _getTetxStyle(
     fontSize: fontSize,
     fontWeight: FontWegihtManager.semiBold,
@@ -36,7 +36,7 @@ TextStyle getSemiBoldStyle({double? fontSize = FontSize.s12,required Color? colo
 }
 
 ///Bold Style 
-TextStyle getMediumStyle({double? fontSize = FontSize.s12,required Color? color}){
+TextStyle getMediumStyle({double? fontSize = FontSize.s16,required Color? color}){
   return _getTetxStyle(
     fontSize: fontSize,
     fontWeight: FontWegihtManager.medium,
@@ -45,7 +45,7 @@ TextStyle getMediumStyle({double? fontSize = FontSize.s12,required Color? color}
 }
 
 ///Light Style 
-TextStyle getLightStyle({double? fontSize = FontSize.s12,required Color? color}){
+TextStyle getLightStyle({double? fontSize = FontSize.s16,required Color? color}){
   return _getTetxStyle(
     fontSize: fontSize,
     fontWeight: FontWegihtManager.light,

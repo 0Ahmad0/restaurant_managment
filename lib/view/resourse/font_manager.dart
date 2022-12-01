@@ -3,7 +3,7 @@ import 'package:flutter/cupertino.dart';
 ///Font Family Calss Name
 class FontManager {
   static  const  fontFamilyEN = "LexendDeca";
-  static  const  fontFamilyAR = "Marhey";
+  static  const  fontFamilyAR = "Lateef";
 }
 
 //**** Font Weghit Every Font ****//

@@ -26,7 +26,16 @@
   "evaluate_the_service": "Evaluate the service",
   "update_information": "Update information",
   "exit": "Exit",
-  "sr": "SR"
+  "sr": "SR",
+  "my_orders": "My order",
+  "order_id": "Number order",
+  "order_table": "Table order",
+  "order_time": "Time order",
+  "order_notes": "notes ex : Without pickles",
+  "profile": "Profile",
+  "camera": "Camera",
+  "gallery": "Gallery"
+
 
 
 

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../manager/widgets/custom_float_actionbutton.dart';
+import 'widgets/cart_shopping_widget.dart';
 import 'widgets/meals_view_body.dart';
 
 class MealsView extends StatelessWidget {
@@ -9,10 +11,12 @@ class MealsView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButtonLocation: FloatingActionButtonLocation.miniCenterFloat,
+      floatingActionButton: CustomFloatActionButton(),
         appBar: AppBar(
           title: Text(title),
         ),
-        body: MealsViewBody(image: image,)
+        body: MealsViewBody(image: image,),
     );
   }
 }

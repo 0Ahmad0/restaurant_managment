@@ -30,5 +30,13 @@ abstract class  LocaleKeys {
   static const update_information = 'update_information';
   static const exit = 'exit';
   static const sr = 'sr';
+  static const my_orders = 'my_orders';
+  static const order_id = 'order_id';
+  static const order_table = 'order_table';
+  static const order_time = 'order_time';
+  static const order_notes = 'order_notes';
+  static const profile = 'profile';
+  static const camera = 'camera';
+  static const gallery = 'gallery';
 
 }

@@ -2,15 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:animate_do/animate_do.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:get/get.dart';
-import 'package:restaurant_managment/model/utils/const.dart';
-import 'package:restaurant_managment/translations/locale_keys.g.dart';
-import 'package:restaurant_managment/view/login/login_view.dart';
-import 'package:restaurant_managment/view/manager/widgets/button_app.dart';
-import 'package:restaurant_managment/view/resourse/assets_manager.dart';
-import 'package:restaurant_managment/view/resourse/color_manager.dart';
-import 'package:restaurant_managment/view/resourse/style_manager.dart';
-import 'package:restaurant_managment/view/resourse/values_manager.dart';
-import 'package:restaurant_managment/view/signup/signup_view.dart';
+import '/model/utils/const.dart';
+import '/translations/locale_keys.g.dart';
+import '/view/login/login_view.dart';
+import '/view/manager/widgets/button_app.dart';
+import '/view/resourse/assets_manager.dart';
+import '/view/resourse/color_manager.dart';
+import '/view/resourse/style_manager.dart';
+import '/view/resourse/values_manager.dart';
 import 'package:sizer/sizer.dart';
 
 import '../../manager/widgets/textformfiled_app.dart';
@@ -106,21 +105,21 @@ class SignupViewBody extends StatelessWidget {
                     suffixIcon: true,
                   ),
                 ),
-                FadeInDownBig(
-                  child: TextFiledApp(
-                    controller: idController,
-                    validator: (val){
-                      if(val!.trim().isEmpty) return tr(LocaleKeys.field_required);
-                      if(val != "nick") return tr(LocaleKeys.this_id_is_already_in_use);
-                      return null;
-                    },
-                    hintText: tr(LocaleKeys.id),
-                    iconData: Icons.numbers,
-                  ),
-                ),
-                SizedBox(
-                  height: 5.h,
-                ),
+                // FadeInDownBig(
+                //   child: TextFiledApp(
+                //     controller: idController,
+                //     validator: (val){
+                //       if(val!.trim().isEmpty) return tr(LocaleKeys.field_required);
+                //       if(val != "nick") return tr(LocaleKeys.this_id_is_already_in_use);
+                //       return null;
+                //     },
+                //     hintText: tr(LocaleKeys.id),
+                //     iconData: Icons.numbers,
+                //   ),
+                // ),
+                // SizedBox(
+                //   height: 5.h,
+                // ),
                 FadeInDownBig(
                   child: ButtonApp(
                     text: tr(LocaleKeys.signup),

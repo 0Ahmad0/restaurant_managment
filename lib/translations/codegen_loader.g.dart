@@ -43,7 +43,15 @@ class CodegenLoader extends AssetLoader{
   "evaluate_the_service": "تقييم الخدمة",
   "update_information": "تحديث المعلومات",
   "exit": "خروج",
-  "sr": "ريال"
+  "sr": "ريال",
+  "my_orders": "طلباتي",
+  "order_id": "رقم الطلب",
+  "order_table": "رقم الطاولة",
+  "order_time": "وقت الطلب",
+  "order_notes": "ملاحظات : مثل بدون مخلل",
+  "profile": "الملف الشخصي",
+  "camera": "الكاميرا",
+  "gallery": "المعرض"
 };
 static const Map<String,dynamic> en = {
   "waitr": "Waitr",
@@ -73,7 +81,15 @@ static const Map<String,dynamic> en = {
   "evaluate_the_service": "Evaluate the service",
   "update_information": "Update information",
   "exit": "Exit",
-  "sr": "SR"
+  "sr": "SR",
+  "my_orders": "My order",
+  "order_id": "Number order",
+  "order_table": "Table order",
+  "order_time": "Time order",
+  "order_notes": "notes ex : Without pickles",
+  "profile": "Profile",
+  "camera": "Camera",
+  "gallery": "Gallery"
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"ar": ar, "en": en};
 }

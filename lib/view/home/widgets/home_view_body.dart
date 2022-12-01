@@ -21,9 +21,9 @@ class HomeViewBody extends StatelessWidget {
       mainScreen:  MainScreen(),
       borderRadius: AppSize.s24,
       showShadow: true,
-      isRtl: context.locale != 'ar'?true:false,
       drawerShadowsBackgroundColor: Colors.white,
-      slideWidth: MediaQuery.of(context).size.width /1.75,
+      slideWidth: MediaQuery.of(context).size.width /1.7,
+      angle: -AppSize.s10,
     );
   }
 }

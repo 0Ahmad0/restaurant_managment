@@ -14,6 +14,8 @@ import 'package:sizer/sizer.dart';
 
 import '../../../translations/locale_keys.g.dart';
 import '../../manager/const.dart';
+import '../../manager/widgets/custom_float_actionbutton.dart';
+import '../../meals/widgets/cart_shopping_widget.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({Key? key}) : super(key: key);
@@ -26,6 +28,8 @@ class _MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButtonLocation: FloatingActionButtonLocation.miniCenterFloat,
+      floatingActionButton: CustomFloatActionButton(),
       appBar: AppBar(
         leading: IconButton(
           onPressed: () {
@@ -58,3 +62,4 @@ class _MainScreenState extends State<MainScreen> {
     );
   }
 }
+

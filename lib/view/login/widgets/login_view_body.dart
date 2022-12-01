@@ -2,15 +2,15 @@ import 'package:animate_do/animate_do.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:restaurant_managment/model/utils/const.dart';
-import 'package:restaurant_managment/translations/locale_keys.g.dart';
-import 'package:restaurant_managment/view/home/home_view.dart';
-import 'package:restaurant_managment/view/manager/widgets/button_app.dart';
-import 'package:restaurant_managment/view/resourse/assets_manager.dart';
-import 'package:restaurant_managment/view/resourse/color_manager.dart';
-import 'package:restaurant_managment/view/resourse/style_manager.dart';
-import 'package:restaurant_managment/view/resourse/values_manager.dart';
-import 'package:restaurant_managment/view/signup/signup_view.dart';
+import '/model/utils/const.dart';
+import '/translations/locale_keys.g.dart';
+import '/view/home/home_view.dart';
+import '/view/manager/widgets/button_app.dart';
+import '/view/resourse/assets_manager.dart';
+import '/view/resourse/color_manager.dart';
+import '/view/resourse/style_manager.dart';
+import '/view/resourse/values_manager.dart';
+import '/view/signup/signup_view.dart';
 import 'package:sizer/sizer.dart';
 
 import '../../manager/widgets/textformfiled_app.dart';
@@ -54,7 +54,7 @@ class LoginViewBody extends StatelessWidget {
                 FadeInDownBig(
                   child: TextFiledApp(
                     controller: idController,
-                    hintText: tr(LocaleKeys.id) + '  |  '+tr(LocaleKeys.email_address),
+                    hintText: tr(LocaleKeys.mobile_number) + '  |  '+tr(LocaleKeys.email_address),
                     iconData: Icons.person,
                   ),
                 ),
@@ -62,6 +62,7 @@ class LoginViewBody extends StatelessWidget {
                   child: TextFiledApp(
                     controller: passwordController,
                     validator: (val){
+                      //TOOD Make Password is Strong
                       if(val!.trim().isEmpty) return tr(LocaleKeys.field_required);
                       if(val.length < 8) return tr(LocaleKeys.enter_strong_password);
                       return null;

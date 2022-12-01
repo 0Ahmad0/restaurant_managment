@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:sizer/sizer.dart';
 import '/view/resourse/color_manager.dart';
 import 'font_manager.dart';
 import 'style_manager.dart';
@@ -20,7 +21,7 @@ Map<int, Color> color = {
 
 class ThemeManager {
   static var myTheme = ThemeData(
-    fontFamily: Get.locale != Locale('ar')?'Marhey':'LexendDeca',
+    fontFamily:FontManager.fontFamilyEN,
     dividerColor: ColorManager.white,
     radioTheme: RadioThemeData(
         fillColor: MaterialStateColor.resolveWith(
@@ -61,6 +62,6 @@ class ThemeManager {
         centerTitle: true,
         elevation: AppSize.s4,
         titleTextStyle:
-            getRegularStyle(color: ColorManager.white, fontSize: FontSize.s16)),
+            getRegularStyle(color: ColorManager.white, fontSize: 18.0.sp)),
   );
 }

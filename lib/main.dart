@@ -3,9 +3,9 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:restaurant_managment/firebase_options.dart';
-import 'package:restaurant_managment/view/resourse/theme_manager.dart';
-import 'package:restaurant_managment/view/splash/splash_view.dart';
+import '/firebase_options.dart';
+import '/view/resourse/theme_manager.dart';
+import '/view/splash/splash_view.dart';
 import 'package:sizer/sizer.dart';
 import 'translations/codegen_loader.g.dart';
 Future<void> main()async{

@@ -1,5 +1,11 @@
+import 'dart:io';
+
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:restaurant_managment/view/confirms_order/confirm_order_view.dart';
+import 'package:restaurant_managment/view/profile/profile_view.dart';
+import 'package:sizer/sizer.dart';
 
 import '../../../model/utils/sizer.dart';
 import '../../../translations/locale_keys.g.dart';
@@ -23,27 +29,27 @@ class _MenuScreenState extends State<MenuScreen> {
         children: [
           UserAccountsDrawerHeader(
             decoration: BoxDecoration(
-                color: ColorManager.secondaryColor
+                color: ColorManager.white
             ),
             margin: EdgeInsets.zero,
             accountName: Text(
                tr(LocaleKeys.full_name),
               style: getRegularStyle(
-                  color: ColorManager.white,
+                  color: ColorManager.black,
+                  fontSize: 10.sp
                   ),
             ),
             accountEmail: Text(
               tr(LocaleKeys.email_address),
               style: getLightStyle(
-                  color: ColorManager.white,
+                  color: ColorManager.black,
+                fontSize: 8.sp
                   ),
             ),
             currentAccountPicture:
               Container(
-                width: Sizer.getW(context)* .8,
-                height: Sizer.getW(context)* .8,
                   decoration: BoxDecoration(
-                    color: ColorManager.white,
+                    color: ColorManager.primaryColor,
                     shape: BoxShape.circle,
                   ),
                   child: FlutterLogo()
@@ -78,7 +84,10 @@ class _MenuScreenState extends State<MenuScreen> {
                 )
                 */
           CustomListTile(
-            onTap: (){},
+            onTap: (){
+              Get.back();
+              Get.to(()=>ConfirmOrderView());
+            },
             icon: Icons.star_rate_outlined,
             title: tr(LocaleKeys.evaluate_the_service),
           ),
@@ -86,7 +95,10 @@ class _MenuScreenState extends State<MenuScreen> {
             thickness: 1.5,
           ),
           CustomListTile(
-            onTap: (){},
+            onTap: (){
+              Get.back();
+              Get.to(()=>ProfileView());
+            },
             icon: Icons.person_pin,
             title: tr(LocaleKeys.update_information),
           ),
@@ -94,7 +106,9 @@ class _MenuScreenState extends State<MenuScreen> {
             thickness: 1.5,
           ),
          CustomListTile(
-           onTap: (){},
+           onTap: (){
+            exit(0);
+           },
            icon: Icons.logout,
            title: tr(LocaleKeys.exit),
          ),

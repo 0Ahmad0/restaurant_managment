@@ -27,6 +27,15 @@
   "evaluate_the_service": "تقييم الخدمة",
   "update_information": "تحديث المعلومات",
   "exit": "خروج",
-  "sr": "ريال"
+  "sr": "ريال",
+  "my_orders": "طلباتي",
+  "order_id": "رقم الطلب",
+  "order_table": "رقم الطاولة",
+  "order_time": "وقت الطلب",
+  "order_notes": "ملاحظات : مثل بدون مخلل",
+  "profile": "الملف الشخصي",
+  "camera": "الكاميرا",
+  "gallery": "المعرض"
+
 
 }
