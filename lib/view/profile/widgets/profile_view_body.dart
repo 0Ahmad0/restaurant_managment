@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:restaurant_managment/translations/locale_keys.g.dart';
 import 'package:restaurant_managment/view/manager/widgets/textformfiled_app.dart';
@@ -159,7 +160,42 @@ class _ProfileViewState extends State<ProfileViewBody> {
                       hintText: tr(LocaleKeys.password)
                   ),
                   const SizedBox(height: AppSize.s20,),
-                  ButtonApp(text: tr(LocaleKeys.edit_password), onPressed: (){}),
+                  ButtonApp(text: tr(LocaleKeys.edit_password), onPressed: (){
+                    Get.dialog(
+                        Center(
+                          child: Material(
+                            color: Colors.transparent,
+                            child: Container(
+                              padding: EdgeInsets.all(AppPadding.p20),
+                              margin: EdgeInsets.all(AppMargin.m20),
+                              height: 34.h,
+                              decoration: BoxDecoration(
+                                  color: ColorManager.white,
+                                  borderRadius: BorderRadius.circular(AppSize.s24)
+                              ),
+                              child: Column(
+                                children: [
+                                  TextFiledApp(
+                                      iconData: Icons.lock,
+                                      hintText: tr(LocaleKeys.new_password)
+                                  ),
+                                  TextFiledApp(
+                                      iconData: Icons.lock,
+                                      hintText: tr(LocaleKeys.confirm_new_password)
+                                  ),
+                                  Spacer(),
+                                  ButtonApp(text: tr(LocaleKeys.done),
+                                      onPressed: (){
+                                        Get.back();
+                                      })
+                                ],
+                              ),
+                            ),
+                          ),
+                        )
+                    );
+
+                  }),
                   const SizedBox(height: AppSize.s20,),
                   ButtonApp(text: tr(LocaleKeys.edit), onPressed: (){}),
                 ],

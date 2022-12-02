@@ -45,7 +45,14 @@
   "forget_password": "forget password?",
   "new_password": "new password",
   "confirm_new_password": "confirm new password",
-  "recovery_email": "Recovery Email"
+  "recovery_email": "Recovery Email",
+  "setting": "Setting",
+  "language": "Language",
+  "arabic": "Arabic",
+  "english": "English",
+  "theme": "Theme",
+  "dark_mode": "Dark mode",
+  "light_mode": "Light mode"
 
 
 }

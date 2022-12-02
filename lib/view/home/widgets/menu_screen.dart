@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:restaurant_managment/view/confirms_order/confirm_order_view.dart';
 import 'package:restaurant_managment/view/profile/profile_view.dart';
+import 'package:restaurant_managment/view/setting/setting_view.dart';
 import 'package:sizer/sizer.dart';
 
 import '../../../model/utils/sizer.dart';
@@ -85,7 +86,6 @@ class _MenuScreenState extends State<MenuScreen> {
                 */
           CustomListTile(
             onTap: (){
-              Get.back();
               Get.to(()=>ConfirmOrderView());
             },
             icon: Icons.star_rate_outlined,
@@ -96,11 +96,20 @@ class _MenuScreenState extends State<MenuScreen> {
           ),
           CustomListTile(
             onTap: (){
-              Get.back();
               Get.to(()=>ProfileView());
             },
             icon: Icons.person_pin,
             title: tr(LocaleKeys.update_information),
+          ),
+          const Divider(
+            thickness: 1.5,
+          ),
+          CustomListTile(
+            onTap: (){
+              Get.to(()=>SettingView());
+            },
+            icon: Icons.settings,
+            title: tr(LocaleKeys.setting),
           ),
           const Divider(
             thickness: 1.5,

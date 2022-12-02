@@ -49,5 +49,12 @@ abstract class  LocaleKeys {
   static const new_password = 'new_password';
   static const confirm_new_password = 'confirm_new_password';
   static const recovery_email = 'recovery_email';
+  static const setting = 'setting';
+  static const language = 'language';
+  static const arabic = 'arabic';
+  static const english = 'english';
+  static const theme = 'theme';
+  static const dark_mode = 'dark_mode';
+  static const light_mode = 'light_mode';
 
 }

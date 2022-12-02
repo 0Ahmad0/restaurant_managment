@@ -46,6 +46,14 @@
   "forget_password": "هل نسيت كلمةالمرور؟",
   "new_password": "كلمة المرور الجديدة",
   "confirm_new_password": "تأكيد كلمة المرور الجديدة",
-  "recovery_email": "ادخل ايميل استعادة كلمة المرور"
+  "recovery_email": "ادخل ايميل استعادة كلمة المرور",
+  "setting": "الإعدادات",
+  "language": "اللغة",
+  "arabic": "العربية",
+  "english": "الإنكليزية",
+  "theme": "الثيم",
+  "dark_mode": "الوضع الليلي",
+  "light_mode": "الوضع النهاري"
+
 
 }

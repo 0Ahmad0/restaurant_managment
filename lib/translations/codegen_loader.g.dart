@@ -62,7 +62,14 @@ class CodegenLoader extends AssetLoader{
   "forget_password": "هل نسيت كلمةالمرور؟",
   "new_password": "كلمة المرور الجديدة",
   "confirm_new_password": "تأكيد كلمة المرور الجديدة",
-  "recovery_email": "ادخل ايميل استعادة كلمة المرور"
+  "recovery_email": "ادخل ايميل استعادة كلمة المرور",
+  "setting": "الإعدادات",
+  "language": "اللغة",
+  "arabic": "العربية",
+  "english": "الإنكليزية",
+  "theme": "الثيم",
+  "dark_mode": "الوضع الليلي",
+  "light_mode": "الوضع النهاري"
 };
 static const Map<String,dynamic> en = {
   "waitr": "Waitr",
@@ -111,7 +118,14 @@ static const Map<String,dynamic> en = {
   "forget_password": "forget password?",
   "new_password": "new password",
   "confirm_new_password": "confirm new password",
-  "recovery_email": "Recovery Email"
+  "recovery_email": "Recovery Email",
+  "setting": "Setting",
+  "language": "Language",
+  "arabic": "Arabic",
+  "english": "English",
+  "theme": "Theme",
+  "dark_mode": "Dark mode",
+  "light_mode": "Light mode"
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"ar": ar, "en": en};
 }

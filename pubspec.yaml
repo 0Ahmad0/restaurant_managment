@@ -52,6 +52,7 @@ dependencies:
   flutter_svg: ^1.1.6
   image_picker: ^0.8.6
   cached_network_image: ^3.2.3
+  animate_icons: ^2.0.0
 
 
 flutter_icons:
