@@ -15,14 +15,18 @@ class BuildMyOrderItem extends StatelessWidget {
   final DateTime timeOrder;
   final String? notesOrder;
   final String? nameOrder;
+  final bool isOk;
 
-  const BuildMyOrderItem(
+
+   BuildMyOrderItem(
       {super.key,
         required this.numberOrder,
         required this.tableOrder,
         required this.timeOrder,
         this.notesOrder = "",
-        this.nameOrder});
+        this.nameOrder,
+        this.isOk = true
+      });
 
   @override
   Widget build(BuildContext context) {
@@ -38,10 +42,10 @@ class BuildMyOrderItem extends StatelessWidget {
                 "${tr(LocaleKeys.order_id)} : ${numberOrder}",
                 style: getBoldStyle(color: ColorManager.black, fontSize: 14.sp),
               ),
-              IconButton(onPressed: () {}, icon: Icon(Icons.delete,
+              if(isOk)IconButton(onPressed: () {}, icon: Icon(Icons.delete,
                 size: 20.sp,
                 color: ColorManager.error,
-              ))
+              )),
             ],
           ),
           nameOrder == null?SizedBox():Column(

@@ -14,6 +14,9 @@ import '../../manager/widgets/button_app.dart';
 import '../../resourse/values_manager.dart';
 
 class ProfileViewBody extends StatefulWidget {
+  final bool isIgnor;
+
+  const ProfileViewBody({super.key, required this.isIgnor});
   @override
   State<ProfileViewBody> createState() => _ProfileViewState();
 }
@@ -66,78 +69,104 @@ class _ProfileViewState extends State<ProfileViewBody> {
     // final profileProvider = Provider.of<ProfileProvider>(context);
     // final loginProvider = Provider.of<LoginProvider>(context);
     // profileProvider.serial_number.text=profileProvider.user.serialNumber;
-    return Container(
-        padding: EdgeInsets.symmetric(
-            vertical: AppPadding.p10, horizontal: AppPadding.p20),
-        child: Center(
-          child: SingleChildScrollView(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Stack(
-                  children: [
-                    Container(
-                      width: 30.w,
-                      height: 30.h,
-                      decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          border: Border.all(
-                              color: Theme.of(context).primaryColor,
-                              width: AppSize.s4)),
-                      child: image == null
-                          ? ClipOval(
-                              child: CachedNetworkImage(
-                              fit: BoxFit.fill,
-                              width: 4.w,
-                              height: 4.h,
-                              imageUrl:
-                                  // "${AppUrl.baseUrlImage}${widget.restaurant.imageLogo!}",
-                                  "https://images.techhive.com/images/article/2017/05/pcw-translate-primary-100723319-large.jpg",
-                              imageBuilder: (context, imageProvider) =>
-                                  Container(
-                                decoration: BoxDecoration(
-                                  image: DecorationImage(
-                                    image: imageProvider,
-                                    fit: BoxFit.cover,
-                                    //    colorFilter: ColorFilter.mode(Colors.red, BlendMode.colorBurn)
+    return IgnorePointer(
+      ignoring: widget.isIgnor,
+      child: Container(
+          padding: EdgeInsets.symmetric(
+              vertical: AppPadding.p10, horizontal: AppPadding.p20),
+          child: Center(
+            child: SingleChildScrollView(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Stack(
+                    children: [
+                      Container(
+                        width: 25.w,
+                        height: 25.h,
+                        decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            border: Border.all(
+                                color: Theme.of(context).primaryColor,
+                                width: AppSize.s4)),
+                        child: image == null
+                            ? ClipOval(
+                                child: CachedNetworkImage(
+                                fit: BoxFit.fill,
+                                width: 5.w,
+                                height: 5.h,
+                                imageUrl:
+                                    // "${AppUrl.baseUrlImage}${widget.restaurant.imageLogo!}",
+                                    "https://images.techhive.com/images/article/2017/05/pcw-translate-primary-100723319-large.jpg",
+                                imageBuilder: (context, imageProvider) =>
+                                    Container(
+                                      width: 5.w,
+                                      height: 5.h,
+                                      decoration: BoxDecoration(
+                                        shape: BoxShape.circle,
+                                        image: DecorationImage(
+                                      image: imageProvider,
+                                      fit: BoxFit.cover,
+                                      //    colorFilter: ColorFilter.mode(Colors.red, BlendMode.colorBurn)
+                                    ),
                                   ),
                                 ),
+                                placeholder: (context, url) =>
+                                    Center(child: CircularProgressIndicator()),
+                              ))
+                            : ClipOval(
+                                child: Image.file(
+                                  File(image!.path),
+                                  fit: BoxFit.fill,
+                                ),
                               ),
-                              placeholder: (context, url) =>
-                                  Center(child: CircularProgressIndicator()),
-                            ))
-                          : ClipOval(
-                              child: Image.file(
-                                File(image!.path),
-                                fit: BoxFit.fill,
-                              ),
-                            ),
-                    ),
-                    Positioned(
-                      bottom: 0,
-                      right: 0,
-                      child: Container(
-                        width: 12.w,
-                        height: 12.h,
-                        decoration: BoxDecoration(
-                            color: Theme.of(context).cardColor,
-                            border: Border.all(
-                                color: Theme.of(context).primaryColor),
-                            shape: BoxShape.circle),
-                        child: IconButton(
-                          onPressed: () {
-                            _showDialog(context);
-                          },
-                          icon: Icon(Icons.edit,size: 15.sp,),
-                        ),
                       ),
-                    )
-                  ],
-                ),
-              ],
+                      Positioned(
+                        bottom: 0,
+                        right: 0,
+                        child: Container(
+                          width: 12.w,
+                          height: 12.h,
+                          decoration: BoxDecoration(
+                              color: Theme.of(context).cardColor,
+                              border: Border.all(
+                                  color: Theme.of(context).primaryColor),
+                              shape: BoxShape.circle),
+                          child: IconButton(
+                            onPressed: () {
+                              _showDialog(context);
+                            },
+                            icon: Icon(Icons.edit,size: 15.sp,),
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
+                  TextFiledApp(
+                      iconData: Icons.person,
+                      hintText: tr(LocaleKeys.full_name)
+                  ),
+                  TextFiledApp(
+                      iconData: Icons.email,
+                      hintText: tr(LocaleKeys.email_address)
+                  ),
+                  TextFiledApp(
+                      iconData: Icons.phone_iphone,
+                      hintText: tr(LocaleKeys.mobile_number)
+                  ),
+                  TextFiledApp(
+                      iconData: Icons.lock,
+                      hintText: tr(LocaleKeys.password)
+                  ),
+                  const SizedBox(height: AppSize.s20,),
+                  ButtonApp(text: tr(LocaleKeys.edit_password), onPressed: (){}),
+                  const SizedBox(height: AppSize.s20,),
+                  ButtonApp(text: tr(LocaleKeys.edit), onPressed: (){}),
+                ],
+              ),
             ),
-          ),
-        ));
+          )),
+    );
   }
   void _showDialog(BuildContext context){
     showDialog(

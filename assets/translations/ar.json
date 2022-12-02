@@ -35,7 +35,17 @@
   "order_notes": "ملاحظات : مثل بدون مخلل",
   "profile": "الملف الشخصي",
   "camera": "الكاميرا",
-  "gallery": "المعرض"
-
+  "gallery": "المعرض",
+  "expired_orders": "الطلبات المنتهية",
+  "current_orders": "الطلبات الحالية",
+  "order_status": "حالة الطلب",
+  "edit": "تعديل",
+  "edit_password": "تعديل كلمة السر",
+  "total_amount": "المبلغ الإجمالي",
+  "done": "تم",
+  "forget_password": "هل نسيت كلمةالمرور؟",
+  "new_password": "كلمة المرور الجديدة",
+  "confirm_new_password": "تأكيد كلمة المرور الجديدة",
+  "recovery_email": "ادخل ايميل استعادة كلمة المرور"
 
 }

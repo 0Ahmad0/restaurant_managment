@@ -38,5 +38,16 @@ abstract class  LocaleKeys {
   static const profile = 'profile';
   static const camera = 'camera';
   static const gallery = 'gallery';
+  static const expired_orders = 'expired_orders';
+  static const current_orders = 'current_orders';
+  static const order_status = 'order_status';
+  static const edit = 'edit';
+  static const edit_password = 'edit_password';
+  static const total_amount = 'total_amount';
+  static const done = 'done';
+  static const forget_password = 'forget_password';
+  static const new_password = 'new_password';
+  static const confirm_new_password = 'confirm_new_password';
+  static const recovery_email = 'recovery_email';
 
 }

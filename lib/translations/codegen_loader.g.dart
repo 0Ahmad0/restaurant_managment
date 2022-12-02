@@ -51,7 +51,18 @@ class CodegenLoader extends AssetLoader{
   "order_notes": "ملاحظات : مثل بدون مخلل",
   "profile": "الملف الشخصي",
   "camera": "الكاميرا",
-  "gallery": "المعرض"
+  "gallery": "المعرض",
+  "expired_orders": "الطلبات المنتهية",
+  "current_orders": "الطلبات الحالية",
+  "order_status": "حالة الطلب",
+  "edit": "تعديل",
+  "edit_password": "تعديل كلمة السر",
+  "total_amount": "المبلغ الإجمالي",
+  "done": "تم",
+  "forget_password": "هل نسيت كلمةالمرور؟",
+  "new_password": "كلمة المرور الجديدة",
+  "confirm_new_password": "تأكيد كلمة المرور الجديدة",
+  "recovery_email": "ادخل ايميل استعادة كلمة المرور"
 };
 static const Map<String,dynamic> en = {
   "waitr": "Waitr",
@@ -89,7 +100,18 @@ static const Map<String,dynamic> en = {
   "order_notes": "notes ex : Without pickles",
   "profile": "Profile",
   "camera": "Camera",
-  "gallery": "Gallery"
+  "gallery": "Gallery",
+  "expired_orders": "Expired orders",
+  "current_orders": "Current orders",
+  "order_status": "Order Status",
+  "edit": "Edit",
+  "edit_password": "Edit password",
+  "total_amount": "Total Amount",
+  "done": "Done",
+  "forget_password": "forget password?",
+  "new_password": "new password",
+  "confirm_new_password": "confirm new password",
+  "recovery_email": "Recovery Email"
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"ar": ar, "en": en};
 }

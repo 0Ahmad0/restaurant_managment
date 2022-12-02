@@ -13,7 +13,7 @@ class ButtonApp extends StatelessWidget {
   final Color? textColor;
   final String text;
   final double? radius;
-  final VoidCallback onPressed;
+  final VoidCallback? onPressed;
 
   @override
   Widget build(BuildContext context) {

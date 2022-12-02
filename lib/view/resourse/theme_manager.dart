@@ -23,6 +23,16 @@ class ThemeManager {
   static var myTheme = ThemeData(
     fontFamily:FontManager.fontFamilyEN,
     dividerColor: ColorManager.white,
+    tabBarTheme: TabBarTheme(
+      labelStyle: getRegularStyle(
+        color: ColorManager.white,
+        fontSize: 12.sp
+      ),
+        unselectedLabelStyle: getRegularStyle(
+            color: ColorManager.black,
+            fontSize: 10.sp
+        )
+    ),
     radioTheme: RadioThemeData(
         fillColor: MaterialStateColor.resolveWith(
             (states) => ColorManager.primaryColor)),
