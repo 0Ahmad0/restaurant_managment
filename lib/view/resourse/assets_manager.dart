@@ -12,4 +12,6 @@ class AssetsManager{
   static const refresh2IMG = '$imagePath/refresh2.svg';
   static const selectOrder2IMG = '$imagePath/order.svg';
   static const emptyCartIMG = '$imagePath/emptycart.svg';
+  static const addChefIMG = '$imagePath/add_chef.svg';
+  static const addMealIMG = '$imagePath/add_meal.svg';
 }

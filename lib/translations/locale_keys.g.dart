@@ -56,5 +56,13 @@ abstract class  LocaleKeys {
   static const theme = 'theme';
   static const dark_mode = 'dark_mode';
   static const light_mode = 'light_mode';
+  static const add_chef = 'add_chef';
+  static const add_meal = 'add_meal';
+  static const meal_name_ar = 'meal_name_ar';
+  static const meal_name_en = 'meal_name_en';
+  static const meal_details_ar = 'meal_details_ar';
+  static const meal_details_en = 'meal_details_en';
+  static const meal_name_pic = 'meal_name_pic';
+  static const meal_price = 'meal_price';
 
 }

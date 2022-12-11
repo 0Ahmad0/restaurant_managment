@@ -25,6 +25,7 @@ class ShadowContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      alignment: Alignment.center,
       padding: EdgeInsets.all(padding),
       margin: EdgeInsets.all(margin),
       decoration: BoxDecoration(

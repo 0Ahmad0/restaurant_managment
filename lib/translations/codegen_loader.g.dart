@@ -69,7 +69,15 @@ class CodegenLoader extends AssetLoader{
   "english": "الإنكليزية",
   "theme": "الثيم",
   "dark_mode": "الوضع الليلي",
-  "light_mode": "الوضع النهاري"
+  "light_mode": "الوضع النهاري",
+  "add_chef": "إضافة معيد",
+  "add_meal": "إضافة وجبة",
+  "meal_name_ar": "اسم الوجبة بالعربي",
+  "meal_name_en": "اسم الوجية بالانكليزي",
+  "meal_details_ar": "مكونات الوجبة بالعربي",
+  "meal_details_en": "مكونات الوجبة بالانكليزي",
+  "meal_name_pic": "صورة الوجية",
+  "meal_price": "سعر الوجبة"
 };
 static const Map<String,dynamic> en = {
   "waitr": "Waitr",
@@ -125,7 +133,15 @@ static const Map<String,dynamic> en = {
   "english": "English",
   "theme": "Theme",
   "dark_mode": "Dark mode",
-  "light_mode": "Light mode"
+  "light_mode": "Light mode",
+  "add_chef": "Add Chef",
+  "add_meal": "Add Meal",
+  "meal_name_ar": "Meal name arabic",
+  "meal_name_en": "Meal name english",
+  "meal_details_ar": "Meal ingredients arabic",
+  "meal_details_en": "Meal ingredients english",
+  "meal_name_pic": "Meal image",
+  "meal_price": "Meal price"
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"ar": ar, "en": en};
 }
