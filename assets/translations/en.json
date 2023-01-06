@@ -53,6 +53,14 @@
   "theme": "Theme",
   "dark_mode": "Dark mode",
   "light_mode": "Light mode",
+  "add_chef": "Add Chef",
+  "add_meal": "Add Meal",
+  "meal_name_ar": "Meal name arabic",
+  "meal_name_en": "Meal name english",
+  "meal_details_ar": "Meal ingredients arabic",
+  "meal_details_en": "Meal ingredients english",
+  "meal_name_pic": "Meal image",
+  "meal_price": "Meal price",
 
 
   "toast": "",

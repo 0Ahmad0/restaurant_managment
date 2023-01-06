@@ -3,6 +3,10 @@ import 'dart:io';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:restaurant_managment/view/add_meal/add_meal_view.dart';
+import '/view/confirms_order/confirm_order_view.dart';
+import '/view/profile/profile_view.dart';
+import '/view/setting/setting_view.dart';
 import 'package:provider/provider.dart';
 import 'package:restaurant_managment/view/confirms_order/confirm_order_view.dart';
 import 'package:restaurant_managment/view/login/login_view.dart';
@@ -13,6 +17,7 @@ import 'package:sizer/sizer.dart';
 import '../../../controller/profile_provider.dart';
 import '../../../model/utils/sizer.dart';
 import '../../../translations/locale_keys.g.dart';
+import '../../admin/add_chef/add_chef_view.dart';
 import '../../app/picture/cach_picture_widget.dart';
 import '../../app/picture/profile_picture_widget.dart';
 import '../../manager/widgets/custom_listtile.dart';
@@ -127,6 +132,26 @@ class _MenuScreenState extends State<MenuScreen> {
             },
             icon: Icons.person_pin,
             title: tr(LocaleKeys.update_information),
+          ),
+          const Divider(
+            thickness: 1.5,
+          ),
+          CustomListTile(
+            onTap: (){
+              Get.to(()=>AddChefView());
+            },
+            icon: Icons.add,
+            title: tr(LocaleKeys.add_chef),
+          ),
+          const Divider(
+            thickness: 1.5,
+          ),
+          CustomListTile(
+            onTap: (){
+              Get.to(()=>AddMealView());
+            },
+            icon: Icons.restaurant_menu,
+            title: tr(LocaleKeys.add_meal),
           ),
           const Divider(
             thickness: 1.5,

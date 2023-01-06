@@ -29,6 +29,12 @@ class SignupViewBody extends StatelessWidget {
   final confirmPasswordController = TextEditingController();
   final idController = TextEditingController();
    final AuthProvider authProvider;
+   RegExp regex =
+   RegExp(r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$');
+   bool validatePassword(String value) {
+     return regex.hasMatch(value);
+   }
+
   @override
   Widget build(BuildContext context) {
     return ShadowContainer(
@@ -86,7 +92,7 @@ class SignupViewBody extends StatelessWidget {
                     controller: passwordController,
                     validator: (val){
                       if(val!.trim().isEmpty) return tr(LocaleKeys.field_required);
-                      if(val.length < 8) return tr(LocaleKeys.enter_strong_password);
+                      if(val.length < 8 && !validatePassword(val)) return tr(LocaleKeys.enter_strong_password);
                       return null;
                     },
                     hintText: tr(LocaleKeys.password),
