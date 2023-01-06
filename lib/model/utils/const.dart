@@ -16,14 +16,14 @@ class Const{
         Center(
           child: Container(
               alignment: Alignment.center,
-              width: Sizer.getW(context) * 0.2,
-              height: Sizer.getW(context) * 0.2,
+              width: SizerApp.getW(context) * 0.2,
+              height: SizerApp.getW(context) * 0.2,
               decoration: BoxDecoration(
                   color: ColorManager.white,
                   borderRadius: BorderRadius.circular(AppSize.s8)),
               child: LoadingAnimationWidget.inkDrop(
                   color: ColorManager.primaryColor,
-                  size: Sizer.getW(context) * 0.1)),
+                  size: SizerApp.getW(context) * 0.1)),
         ),
         barrierDismissible: false
     );
@@ -54,7 +54,7 @@ class Const{
             padding: EdgeInsets.symmetric(
                 horizontal: AppPadding.p20,
                 vertical: AppPadding.p10),
-            width: Sizer.getW(context),
+            width: SizerApp.getW(context),
             decoration: BoxDecoration(
                 color: Theme.of(context).cardColor,
                 borderRadius:
@@ -67,7 +67,7 @@ class Const{
                   "tr(LocaleKeys.rate)",
                   style: getRegularStyle(
                       color: Theme.of(context).textTheme.bodyText1!.color,
-                      fontSize: Sizer.getW(context) * 0.045
+                      fontSize: SizerApp.getW(context) * 0.045
                   ),
                 ),
                 const SizedBox(height: AppSize.s40,),
@@ -138,7 +138,7 @@ class Const{
             padding: EdgeInsets.symmetric(
                 horizontal: AppPadding.p20,
                 vertical: AppPadding.p10),
-            width: Sizer.getW(context),
+            width: SizerApp.getW(context),
             decoration: BoxDecoration(
                 color: Theme.of(context).cardColor,
                 borderRadius:
@@ -151,7 +151,7 @@ class Const{
                   "tr(LocaleKeys.delete)",
                   style: getRegularStyle(
                       color: Theme.of(context).textTheme.bodyText1!.color,
-                      fontSize: Sizer.getW(context) * 0.045
+                      fontSize: SizerApp.getW(context) * 0.045
                   ),
                 ),
                 const SizedBox(height: AppSize.s40,),

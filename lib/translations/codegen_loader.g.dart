@@ -69,7 +69,20 @@ class CodegenLoader extends AssetLoader{
   "english": "الإنكليزية",
   "theme": "الثيم",
   "dark_mode": "الوضع الليلي",
-  "light_mode": "الوضع النهاري"
+  "light_mode": "الوضع النهاري",
+  "toast": "",
+  "toast_successfully_created": "تم إنشاء الحساب بنجاح",
+  "toast_Unsuccessfully_created": "فشل إنشاء الحساب",
+  "toast_email_already_use": "البريد الإلكتروني قيد الاستخدام بالفعل",
+  "toast_short_password": "كلمة المرور قصيرة\nيجب ألا تقل عن 6 أحرف",
+  "toast_successfully_logged": "تم تسجيل الدخول بنجاح",
+  "toast_email_invalid": "البريد غير صحيح",
+  "toast_password_invalid": "كلمة السر غير صحيحة",
+  "toast_network_error": "حدث خطأ في الاتصال",
+  "toast_account_invalid": "الحساب غير صحيح",
+  "toast_Bad_data_fetch": "خطأ داخلي: جلب سيء للبيانات",
+  "toast_time_out": "خطأ في الاتصال",
+  "toast_given_empty": "القيمة المعطاء فارغة"
 };
 static const Map<String,dynamic> en = {
   "waitr": "Waitr",
@@ -125,7 +138,20 @@ static const Map<String,dynamic> en = {
   "english": "English",
   "theme": "Theme",
   "dark_mode": "Dark mode",
-  "light_mode": "Light mode"
+  "light_mode": "Light mode",
+  "toast": "",
+  "toast_successfully_created": "Account successfully created",
+  "toast_Unsuccessfully_created": "Account Unsuccessfully created",
+  "toast_email_already_use": "The email address is already in use",
+  "toast_short_password": "short password\nshould be at least 6 characters",
+  "toast_successfully_logged": "successfully logged",
+  "toast_email_invalid": "The email is invalid",
+  "toast_password_invalid": "The password is invalid",
+  "toast_network_error": "A network error",
+  "toast_account_invalid": "Account is invalid",
+  "toast_Bad_data_fetch": "Internal Error: Bad data fetch",
+  "toast_time_out": "time out",
+  "toast_given_empty": "Given String is empty or null"
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"ar": ar, "en": en};
 }

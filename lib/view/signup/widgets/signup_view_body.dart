@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:animate_do/animate_do.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:get/get.dart';
+import 'package:restaurant_managment/model/models.dart';
+import '../../../controller/auth_provider.dart';
+import '../../../model/utils/consts_manager.dart';
+import '../../home/home_view.dart';
 import '/model/utils/const.dart';
 import '/translations/locale_keys.g.dart';
 import '/view/login/login_view.dart';
@@ -16,7 +20,7 @@ import '../../manager/widgets/textformfiled_app.dart';
 import '../../manager/widgets/ShadowContainer.dart';
 
 class SignupViewBody extends StatelessWidget {
-   SignupViewBody({Key? key}) : super(key: key);
+   SignupViewBody({Key? key,required this.authProvider}) : super(key: key);
   final keyForm = GlobalKey<FormState>();
   final fullNameController = TextEditingController();
   final mobileNumberController = TextEditingController();
@@ -24,7 +28,7 @@ class SignupViewBody extends StatelessWidget {
   final passwordController = TextEditingController();
   final confirmPasswordController = TextEditingController();
   final idController = TextEditingController();
-
+   final AuthProvider authProvider;
   @override
   Widget build(BuildContext context) {
     return ShadowContainer(
@@ -124,9 +128,21 @@ class SignupViewBody extends StatelessWidget {
                   child: ButtonApp(
                     text: tr(LocaleKeys.signup),
                     textColor: ColorManager.white,
-                    onPressed: () {
+                    onPressed: () async {
                       if(keyForm.currentState!.validate()){
                         Const.LOADIG(context);
+                        authProvider.user=User(id: '', uid: '',
+                            name: fullNameController.text,
+                            email: emailAddressController.text,
+                            phoneNumber: mobileNumberController.text
+                            , password: confirmPasswordController.text,
+                            typeUser: AppConstants.collectionUser,
+                            photoUrl: AppConstants.photoProfileUser);
+                        final result=await authProvider.signup(context);
+                        Get.back();
+                        if(result['status'])
+                          Get.to(() => HomeView(),
+                              transition: Transition.circularReveal);
                       }else{
                         Get.snackbar("Error", "Please fill all");
                       }

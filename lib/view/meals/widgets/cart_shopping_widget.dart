@@ -33,7 +33,7 @@ class _CartShoppingWidgetState extends State<CartShoppingWidget> {
       ),
       child: Wrap(
         children: [
-          ...List.generate(30, (index) =>
+          ...List.generate(10, (index) =>
               Container(
                 margin: const EdgeInsets.all(AppMargin.m8),
                 child: Chip(

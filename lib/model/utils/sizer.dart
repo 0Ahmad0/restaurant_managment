@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 
-class Sizer{
+class SizerApp{
   static double getH(context){
     return MediaQuery.of(context).size.height;
   }

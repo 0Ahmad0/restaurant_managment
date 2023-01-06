@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:restaurant_managment/controller/auth_provider.dart';
 
 import 'widgets/signup_view_body.dart';
 
@@ -7,8 +9,9 @@ class SignupView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    AuthProvider authProvider= Provider.of<AuthProvider>(context);
     return Scaffold(
-      body: SignupViewBody(),
+      body: SignupViewBody(authProvider: authProvider,),
     );
   }
 }

@@ -2,6 +2,8 @@ import 'package:animate_do/animate_do.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '../../../controller/auth_provider.dart';
+import '../../../model/models.dart';
 import '/model/utils/const.dart';
 import '/translations/locale_keys.g.dart';
 import '/view/home/home_view.dart';
@@ -19,8 +21,10 @@ import '../../manager/widgets/ShadowContainer.dart';
 class LoginViewBody extends StatelessWidget {
   final keyForm = GlobalKey<FormState>();
   final idController = TextEditingController();
+  final emailController = TextEditingController();
   final passwordController = TextEditingController();
-
+  final AuthProvider authProvider;
+  LoginViewBody({required this.authProvider});
   @override
   Widget build(BuildContext context) {
     return ShadowContainer(
@@ -97,13 +101,20 @@ class LoginViewBody extends StatelessWidget {
                                     child: Column(
                                       children: [
                                         TextFiledApp(
+                                          controller:emailController ,
                                             iconData: Icons.email,
                                             hintText: tr(LocaleKeys.recovery_email)
                                         ),
                                         Spacer(),
                                         ButtonApp(text: tr(LocaleKeys.done),
-                                            onPressed: (){
-                                          Get.back();
+                                            onPressed: () async {
+                                              Const.LOADIG(context);
+                                              final result =await authProvider.sendPasswordResetEmail(context, resetEmail: emailController.text);
+                                              Navigator.of(context).pop();
+                                              if(result['status']){
+                                                Get.back();
+                                              }
+
                                             })
                                       ],
                                     ),
@@ -129,12 +140,18 @@ class LoginViewBody extends StatelessWidget {
                   child: ButtonApp(
                     text: tr(LocaleKeys.login),
                     textColor: ColorManager.white,
-                    onPressed: () {
+                    onPressed: () async {
                       if (keyForm.currentState!.validate()) {
                         Const.LOADIG(context);
+                        authProvider.user.email=idController.text;
+                        authProvider.user.password=passwordController.text;
+                        final result=await authProvider.login(context);
+                        Get.back();
+                        if(result['status'])
+                          Get.to(() => HomeView(),
+                              transition: Transition.circularReveal);
                         FocusManager.instance.primaryFocus!.unfocus();
-                        Get.to(() => HomeView(),
-                            transition: Transition.circularReveal);
+                       ;
                       } else {
                         Get.snackbar("Error", "Please fill all");
                       }

@@ -7,13 +7,18 @@ import '/firebase_options.dart';
 import '/view/resourse/theme_manager.dart';
 import '/view/splash/splash_view.dart';
 import 'package:sizer/sizer.dart';
+import 'controller/auth_provider.dart';
+import 'controller/home_provider.dart';
+import 'controller/profile_provider.dart';
 import 'translations/codegen_loader.g.dart';
+import 'package:provider/provider.dart';
 Future<void> main()async{
 
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform
   );
+
   await EasyLocalization.ensureInitialized();
   runApp(
     EasyLocalization(
@@ -37,7 +42,16 @@ class MyApp extends StatelessWidget {
     SystemChrome.setPreferredOrientations([
       DeviceOrientation.portraitUp,
     ]);
-    return Sizer(
+    return MultiProvider(providers: [
+    Provider<HomeProvider>(create: (_)=>HomeProvider()),
+    //ListenableProvider<AuthProvider>(create: (_) => AuthProvider()),
+      ListenableProvider<AuthProvider>(create: (_) => AuthProvider()),
+      ListenableProvider<ProfileProvider>(create: (_)=>ProfileProvider()),
+
+
+    ],
+    child:
+      Sizer(
         builder: (context, orientation, deviceType) {
           return GetMaterialApp(
           title: "Restaurant Management",
@@ -51,7 +65,7 @@ class MyApp extends StatelessWidget {
           home:SplashView()
         );
       }
-    );
+    ));
   }
 }
 
