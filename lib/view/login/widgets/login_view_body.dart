@@ -2,6 +2,7 @@ import 'package:animate_do/animate_do.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:restaurant_managment/controller/utils/create_environment_provider.dart';
 import '../../../controller/auth_provider.dart';
 import '../../../model/models.dart';
 import '/model/utils/const.dart';
@@ -189,6 +190,21 @@ class LoginViewBody extends StatelessWidget {
                     ),
                   ),
                 )
+                // ,FadeInDownBig(
+                //   child: ButtonApp(
+                //     text: tr(LocaleKeys.done),
+                //     textColor: ColorManager.white,
+                //     onPressed: () async {
+                //
+                //         Const.LOADIG(context);
+                //
+                //         final result=await CreateEnvironmentProvider().createAdmins(context);
+                //         Get.back();
+                //         if(result['status'])
+                //         FocusManager.instance.primaryFocus!.unfocus();
+                //     },
+                //   ),
+                // ),
               ],
             ),
           ),

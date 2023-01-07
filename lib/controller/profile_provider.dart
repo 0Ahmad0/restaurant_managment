@@ -16,9 +16,9 @@ import '../model/utils/const.dart';
 import '../model/utils/local/storage.dart';
 
 class ProfileProvider with ChangeNotifier{
-  final serial_number = TextEditingController(text: "000-252-1456-6222");
    var name = TextEditingController(text: "أحمد الحريري");
   var email = TextEditingController(text: "Ahmad2001@gmail.com");
+   var phoneNumber = TextEditingController(text: "");
   bool nameIgnor = true;
   bool emailIgnor = true;
   models.User user= models.User(id: "id",uid: "uid", name: "name", email: "email", phoneNumber: "phoneNumber", password: "password",photoUrl: "photoUrl",typeUser: "typeUser");
@@ -27,12 +27,14 @@ class ProfileProvider with ChangeNotifier{
     this.user=user;
      name = TextEditingController(text: user.name);
      email = TextEditingController(text: user.email);
+     phoneNumber = TextEditingController(text: user.phoneNumber);
      notifyListeners();
   }
    editUser(context) async {
      models.User tempUser= models.User.fromJson(user.toJson());
      tempUser.email =email.text;
      tempUser.name=name.text;
+     tempUser.phoneNumber=phoneNumber.text;
     /// print(tempUser.toJson());
      var result =await FirebaseFun.updateUserEmail(user: tempUser);
      if(result['status']){

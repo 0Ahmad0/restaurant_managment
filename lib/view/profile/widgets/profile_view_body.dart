@@ -5,19 +5,27 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:provider/provider.dart';
+import 'package:restaurant_managment/controller/auth_provider.dart';
+import 'package:restaurant_managment/controller/profile_provider.dart';
 import 'package:restaurant_managment/translations/locale_keys.g.dart';
 import 'package:restaurant_managment/view/manager/widgets/textformfiled_app.dart';
 import 'package:restaurant_managment/view/resourse/color_manager.dart';
 import 'package:restaurant_managment/view/resourse/style_manager.dart';
 import 'package:sizer/sizer.dart';
 
+import '../../../model/utils/const.dart';
+import '../../../model/utils/sizer.dart';
+import '../../app/picture/cach_picture_widget.dart';
+import '../../app/picture/profile_picture_widget.dart';
 import '../../manager/widgets/button_app.dart';
 import '../../resourse/values_manager.dart';
 
 class ProfileViewBody extends StatefulWidget {
   final bool isIgnor;
 
-  const ProfileViewBody({super.key, required this.isIgnor});
+  const ProfileViewBody({super.key, required this.isIgnor,required this.profileProvider});
+  final ProfileProvider profileProvider;
   @override
   State<ProfileViewBody> createState() => _ProfileViewState();
 }
@@ -44,6 +52,12 @@ class _ProfileViewState extends State<ProfileViewBody> {
     // await uploadImage( );
     setState(() {});
   }
+  removeGallery() async {
+    image =null ;
+    widget.profileProvider.user.photoUrl=" ";
+    ///print(" ${image==null}");
+    setState(() {});
+  }
 
 //   Future uploadImage() async {
 //     try {
@@ -67,8 +81,9 @@ class _ProfileViewState extends State<ProfileViewBody> {
 
   @override
   Widget build(BuildContext context) {
+
     // final profileProvider = Provider.of<ProfileProvider>(context);
-    // final loginProvider = Provider.of<LoginProvider>(context);
+     final authProvider = Provider.of<AuthProvider>(context);
     // profileProvider.serial_number.text=profileProvider.user.serialNumber;
     return IgnorePointer(
       ignoring: widget.isIgnor,
@@ -84,43 +99,36 @@ class _ProfileViewState extends State<ProfileViewBody> {
                     children: [
                       Container(
                         width: 25.w,
-                        height: 25.h,
+                        height: 25.w,
                         decoration: BoxDecoration(
                             shape: BoxShape.circle,
                             border: Border.all(
                                 color: Theme.of(context).primaryColor,
                                 width: AppSize.s4)),
-                        child: image == null
+                        child:  image == null
                             ? ClipOval(
-                                child: CachedNetworkImage(
-                                fit: BoxFit.fill,
-                                width: 5.w,
-                                height: 5.h,
-                                imageUrl:
-                                    // "${AppUrl.baseUrlImage}${widget.restaurant.imageLogo!}",
-                                    "https://images.techhive.com/images/article/2017/05/pcw-translate-primary-100723319-large.jpg",
-                                imageBuilder: (context, imageProvider) =>
-                                    Container(
-                                      width: 5.w,
-                                      height: 5.h,
-                                      decoration: BoxDecoration(
-                                        shape: BoxShape.circle,
-                                        image: DecorationImage(
-                                      image: imageProvider,
-                                      fit: BoxFit.cover,
-                                      //    colorFilter: ColorFilter.mode(Colors.red, BlendMode.colorBurn)
-                                    ),
-                                  ),
-                                ),
-                                placeholder: (context, url) =>
-                                    Center(child: CircularProgressIndicator()),
-                              ))
-                            : ClipOval(
-                                child: Image.file(
-                                  File(image!.path),
-                                  fit: BoxFit.fill,
-                                ),
+                            child:
+                            CacheNetworkImage(
+                              photoUrl: '${widget.profileProvider.user.photoUrl}',
+                              width: SizerApp.getW(context) * 0.14,
+                              height: SizerApp.getW(context) * 0.14,
+                              waitWidget: WidgetProfilePicture(
+                                name: widget.profileProvider.user.name,
+                                radius: AppSize.s30,
+                                fontSize: SizerApp.getW(context) / 10,
                               ),
+                              errorWidget: WidgetProfilePicture(
+                                name: widget.profileProvider.user.name,
+                                radius: AppSize.s30,
+                                fontSize: SizerApp.getW(context) / 10,
+                              ),
+                            ))
+                            : ClipOval(
+                          child: Image.file(File(image!.path),
+                            fit: BoxFit.fill,
+                          ),
+                        ),
+
                       ),
                       Positioned(
                         bottom: 0,
@@ -144,21 +152,24 @@ class _ProfileViewState extends State<ProfileViewBody> {
                     ],
                   ),
                   TextFiledApp(
+                    controller: widget.profileProvider.name,
                       iconData: Icons.person,
                       hintText: tr(LocaleKeys.full_name)
                   ),
                   TextFiledApp(
+                      controller: widget.profileProvider.email,
                       iconData: Icons.email,
                       hintText: tr(LocaleKeys.email_address)
                   ),
                   TextFiledApp(
+                      controller: widget.profileProvider.phoneNumber,
                       iconData: Icons.phone_iphone,
                       hintText: tr(LocaleKeys.mobile_number)
                   ),
-                  TextFiledApp(
-                      iconData: Icons.lock,
-                      hintText: tr(LocaleKeys.password)
-                  ),
+                  // TextFiledApp(
+                  //     iconData: Icons.lock,
+                  //     hintText: tr(LocaleKeys.password)
+                  // ),
                   const SizedBox(height: AppSize.s20,),
                   ButtonApp(text: tr(LocaleKeys.edit_password), onPressed: (){
                     Get.dialog(
@@ -185,7 +196,9 @@ class _ProfileViewState extends State<ProfileViewBody> {
                                   ),
                                   Spacer(),
                                   ButtonApp(text: tr(LocaleKeys.done),
-                                      onPressed: (){
+                                      onPressed: () async {
+                                        Const.LOADIG(context);
+                                        final result =await authProvider.sendPasswordResetEmail(context, resetEmail: widget.profileProvider.user.email);
                                         Get.back();
                                       })
                                 ],
@@ -197,7 +210,13 @@ class _ProfileViewState extends State<ProfileViewBody> {
 
                   }),
                   const SizedBox(height: AppSize.s20,),
-                  ButtonApp(text: tr(LocaleKeys.edit), onPressed: (){}),
+                  ButtonApp(text: tr(LocaleKeys.edit), onPressed: () async {
+                    Const.LOADIG(context);
+                    if(image!=null)
+                      await widget.profileProvider.uploadImage(context, image!);
+                    await widget.profileProvider.editUser(context);
+                    Navigator.of(context).pop();
+                  }),
                 ],
               ),
             ),
@@ -276,6 +295,32 @@ class _ProfileViewState extends State<ProfileViewBody> {
                                     fontSize: 12.sp
                                 ),
                               ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                    Divider(
+                      height: 0.0,
+                    ),
+                    Expanded(
+                      child: InkWell(
+                        onTap: ()  {
+
+                          removeGallery();
+                          Navigator.pop(context);
+                        },
+                        child: Container(
+                          alignment: Alignment.center,
+                          padding: EdgeInsets.all(
+                              AppPadding.p8),
+                          child: Row(
+                            children: [
+                              Icon(Icons.delete),
+                              const SizedBox(
+                                width: AppSize.s8,
+                              ),
+                              Text(tr(LocaleKeys.remove),),
                             ],
                           ),
                         ),

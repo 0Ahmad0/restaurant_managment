@@ -120,8 +120,8 @@ class FirebaseFun{
         .catchError(onError).timeout(timeOut,onTimeout: onTimeOut);
     return result;
   }
-  static loginWithPhoneNumber( {required String phoneNumber,required String password})  async {
-    final result=await FirebaseFirestore.instance.collection(AppConstants.collectionUser).
+  static loginWithPhoneNumber( {required String phoneNumber,required String password, required String typeUser })  async {
+    final result=await FirebaseFirestore.instance.collection(typeUser).
         where('phoneNumber',isEqualTo: phoneNumber)
     .where('password',isEqualTo:password ).get().
     then((onValueloginWithphoneNumber))
@@ -298,6 +298,9 @@ class FirebaseFun{
      }
      else if(text.contains("Account successfully created")){
         return tr(LocaleKeys.toast_successfully_created);
+     }
+     else if(text.contains("Account successfully update")){
+       return tr(LocaleKeys.toast_successfully_update);
      }
      else if(text.contains("The password is invalid or the user does not have a password")){
         return tr(LocaleKeys.toast_password_invalid);

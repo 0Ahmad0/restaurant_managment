@@ -38,6 +38,7 @@ abstract class  LocaleKeys {
   static const profile = 'profile';
   static const camera = 'camera';
   static const gallery = 'gallery';
+  static const remove = 'remove';
   static const expired_orders = 'expired_orders';
   static const current_orders = 'current_orders';
   static const order_status = 'order_status';
@@ -66,6 +67,7 @@ abstract class  LocaleKeys {
   static const meal_price = 'meal_price';
   static const toast = 'toast';
   static const toast_successfully_created = 'toast_successfully_created';
+  static const toast_successfully_update = 'toast_successfully_update';
   static const toast_Unsuccessfully_created = 'toast_Unsuccessfully_created';
   static const toast_email_already_use = 'toast_email_already_use';
   static const toast_short_password = 'toast_short_password';

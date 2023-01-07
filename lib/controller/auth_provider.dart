@@ -46,41 +46,23 @@ class AuthProvider with ChangeNotifier{
     return result;
   }
   signupAD(context) async{
-    name.text ="Admin hiba";
-    email.text ="admin4@gmail.com";
-    phoneNumber.text ="0999888774";
-    password.text ="123456";
-    String description="";
-    String photoUrl=AppConstants.photoProfileAdmin;
-    String typeUser=AppConstants.collectionAdmin;
-    var result =await FirebaseFun.signup(email: email.text, password: password.text);
-    if(result['status']){
-      user= models.User(id: "",uid:result['body']['uid'],
-          name: name.text,
-          email: email.text,
-          phoneNumber: phoneNumber.text,
-          password: password.text
-          ,photoUrl: photoUrl,
-          typeUser: typeUser,
-          description: description);
-      result = await FirebaseFun.createUser(user: user);
+    bool checkPhoneOrEmailFound =await FirebaseFun.checkPhoneOrEmailFound(email:user.email, phone: user.phoneNumber);
+    var result;
+    if(checkPhoneOrEmailFound){
+      result =await FirebaseFun.signup(email: user.email, password: user.password);
       if(result['status']){
-        user= models.User.fromJson(result['body']);
-        // print(result);
-
-      }else{
-        // print(result);
-      }
-    }else{
-      //print(result);
+        user.uid=result['body']['uid'];
+        result = await FirebaseFun.createUser(user: user);
+        if(result['status']){
+          user= models.User.fromJson(result['body']);
+        }
+      }}
+    else{
+      result=FirebaseFun.errorUser("the email or phoneNumber already uses");
     }
     print(result);
     Const.TOAST(context,textToast: FirebaseFun.findTextToast(result['message'].toString()));
     return result;
-    /*if(result['status']){
-    }else{
-    }*/
-    // user.uid=result['body']['uid'];
   }
   login(context) async{
     var result=await loginWithPhoneNumber(context);
@@ -103,9 +85,18 @@ class AuthProvider with ChangeNotifier{
     return result;
   }
   loginWithPhoneNumber(context) async{
-    var resultUser =await FirebaseFun.loginWithPhoneNumber(phoneNumber: user.email, password: user.password);
+
+    var resultUser =await FirebaseFun.loginWithPhoneNumber(phoneNumber: user.email, password: user.password,typeUser: AppConstants.collectionUser);
+    if(!resultUser["status"])
+      resultUser =await FirebaseFun.loginWithPhoneNumber(phoneNumber: user.email, password: user.password,typeUser: AppConstants.collectionChef);
+    if(!resultUser["status"])
+      resultUser =await FirebaseFun.loginWithPhoneNumber(phoneNumber: user.email, password: user.password,typeUser: AppConstants.collectionAdmin);
+    if(resultUser['status'])
+    {
+      user= models.User.fromJson(resultUser['body']);
+    }
     var result;
-    result=await _baseLogin(context, resultUserAfterLog: resultUser);
+    result=await loginWithEmil(context);
     return result;
   }
   _baseLogin(context,{required var resultUserAfterLog}) async{
@@ -154,7 +145,7 @@ class AuthProvider with ChangeNotifier{
     var result= await FirebaseFun.fetchUser(uid: uid, typeUser: AppConstants.collectionUser);
     // print(result);
     if(result['status']&&result['body']==null){
-      result = await FirebaseFun.fetchUser(uid: uid, typeUser: AppConstants.collectionCompany);
+      result = await FirebaseFun.fetchUser(uid: uid, typeUser: AppConstants.collectionChef);
       if(result['status']&&result['body']==null){
 
         result = await FirebaseFun.fetchUser(uid: uid, typeUser: AppConstants.collectionAdmin);

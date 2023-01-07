@@ -16,22 +16,38 @@ class CreateEnvironmentProvider with ChangeNotifier{
         uid: "",
         name: "Admin",
         email: "admin@gmail.com",
-        phoneNumber: "+999999999999",
-        password: "123456",
+        phoneNumber: "0999999991",
+        password: "12345678",
         typeUser: AppConstants.collectionAdmin,
         photoUrl: ""),
+    models.User(id: "",
+        uid: "",
+        name: "Admin",
+        email: "ad@gmail.com",
+        phoneNumber: "0999999992",
+        password: "12345678",
+        typeUser: AppConstants.collectionAdmin,
+        photoUrl: "")
   ];
   createAdmin(context,{int indexListAdmin=0}) async {
     if(listAdmin.length<1){
       return FirebaseFun.errorUser("a user is emty");
     }
     models.User user=listAdmin[indexListAdmin];
-    var result =await FirebaseFun.signup(email: user.email, password: user.password);
-    if(result['status']){
-        user.uid= result['body']['uid'];
+    bool checkPhoneOrEmailFound =await FirebaseFun.checkPhoneOrEmailFound(email:user.email, phone: user.phoneNumber);
+    var result;
+    if(checkPhoneOrEmailFound){
+      result =await FirebaseFun.signup(email: user.email, password: user.password);
+      if(result['status']){
+        user.uid=result['body']['uid'];
         result = await FirebaseFun.createUser(user: user);
+        if(result['status']){
+          user= models.User.fromJson(result['body']);
+        }
+      }}
+    else{
+      result=FirebaseFun.errorUser("the email or phoneNumber already uses");
     }
-    print(result);
     Const.TOAST(context,textToast: FirebaseFun.findTextToast(result['message'].toString()));
     return result;
   }
