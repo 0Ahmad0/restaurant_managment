@@ -13,6 +13,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:path/path.dart';
 import 'package:restaurant_managment/model/models.dart' as model;
 
+import '../../model/models.dart';
 import '../../model/utils/consts_manager.dart';
 import '../../translations/locale_keys.g.dart';
 
@@ -163,10 +164,39 @@ class FirebaseFun{
     final result=await FirebaseAuth.instance.sendPasswordResetEmail(
       email: email,///"temp@gmail.com",
     ).then((onValueSendPasswordResetEmail))
-        .catchError(onError);
+        .catchError(onError).timeout(timeOut,onTimeout: onTimeOut);
+    return result;
+  }
+  static updatePassword( {required String newPassword})  async {
+    final result=await auth.currentUser?.updatePassword(newPassword)
+        .then((onValueUpdatePassword))
+        .catchError(onError).timeout(timeOut,onTimeout: onTimeOut);
+
     return result;
   }
 
+///Meal
+  static addMeal( {required Meal meal}) async {
+    final result= await FirebaseFirestore.instance.collection(AppConstants.collectionMeal).add(
+        meal.toJson()
+    ).then(onValueAddMeal).catchError(onError).timeout(timeOut,onTimeout: onTimeOut);
+    return result;
+  }
+  static fetchMeals()  async {
+    final result=await FirebaseFirestore.instance.collection(AppConstants.collectionMeal)
+        .get()
+        .then((onValueFetchMeals))
+        .catchError(onError).timeout(timeOut,onTimeout: onTimeOut);
+    return result;
+  }
+  static fetchMealsCategory({required List categories})  async {
+    final result=await FirebaseFirestore.instance.collection(AppConstants.collectionMeal)
+    .where("category" ,arrayContainsAny: categories)
+        .get()
+        .then((onValueFetchMealsCategory))
+        .catchError(onError).timeout(timeOut,onTimeout: onTimeOut);
+    return result;
+  }
 
    static Future<Map<String,dynamic>>  onError(error) async {
     print(false);
@@ -218,6 +248,20 @@ class FirebaseFun{
     return {
       'status':true,
       'message':'Email successfully send code ',
+      'body':{}
+    };
+  }
+  static Future<Map<String,dynamic>>onValueUpdatePassword(value) async{
+    return {
+      'status':true,
+      'message':'Password successfully update',
+      'body':{}
+    };
+  }
+  static Future<Map<String,dynamic>>onValueAddMeal(value) async{
+    return {
+      'status':true,
+      'message':'Meal successfully add',
       'body':{}
     };
   }
@@ -286,6 +330,26 @@ class FirebaseFun{
       'body':value.docs
     };
   }
+
+  static Future<Map<String,dynamic>> onValueFetchMeals(value) async{
+
+    print("Meals count : ${value.docs.length}");
+
+    return {
+      'status':true,
+      'message':'Meals successfully fetch',
+      'body':value.docs
+    };
+  }
+  static Future<Map<String,dynamic>> onValueFetchMealsCategory(value) async{
+
+    return {
+      'status':true,
+      'message':'MealsCategory successfully fetch',
+      'body':value.docs
+    };
+  }
+
 
   static String findTextToast(String text){
      if(text.contains("Password should be at least 6 characters")){

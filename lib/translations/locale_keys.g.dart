@@ -20,6 +20,7 @@ abstract class  LocaleKeys {
   static const salad = 'salad';
   static const main_dishes = 'main_dishes';
   static const appetizer = 'appetizer';
+  static const select_category = 'select_category';
   static const field_required = 'field_required';
   static const enter_strong_password = 'enter_strong_password';
   static const enter_valid_phone_number = 'enter_valid_phone_number';
@@ -65,6 +66,7 @@ abstract class  LocaleKeys {
   static const meal_details_en = 'meal_details_en';
   static const meal_name_pic = 'meal_name_pic';
   static const meal_price = 'meal_price';
+  static const no_dishes_category = 'no_dishes_category';
   static const toast = 'toast';
   static const toast_successfully_created = 'toast_successfully_created';
   static const toast_successfully_update = 'toast_successfully_update';

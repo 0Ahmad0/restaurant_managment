@@ -1,11 +1,7 @@
-import 'package:flutter/cupertino.dart';
-class Meal{
-  String name;
-  String price;
-  List<String> ingredients;
+import 'dart:convert';
 
-  Meal({required this.name,required this.price,required this.ingredients});
-}
+
+import 'package:flutter/cupertino.dart';
 
 class Advance {
   static bool theme = false;
@@ -38,7 +34,7 @@ class User {
         required this.photoUrl,
         this.description="",});
   factory User.fromJson( json){
-
+    //var data=json.data();
     return User(id: json['id'],
         uid: json["uid"],
         name: json["name"],
@@ -90,6 +86,199 @@ class Users {
     };
   }
 }
+
+//Meal
+class Meal {
+  String id;
+  int count=0;
+  String mealNameAr;
+  String mealNameEn;
+  String photoUrl;
+  String photoUrlLocal;
+  String mealDetailsAr;
+  String mealDetailsEn;
+  String price;
+  String category;
+
+  Meal(
+      { this.id="",
+        required this.mealNameAr,
+        required this.mealNameEn,
+        required this.photoUrl,
+         this.photoUrlLocal="",
+         this.count=0,
+        required this.mealDetailsAr,
+        required this.mealDetailsEn,
+        required this.price,
+        required this.category,});
+  factory Meal.fromJson( json){
+    var data=json.data();
+    return Meal(
+        id: json['id'],
+        mealNameAr: json["mealNameAr"],
+        mealNameEn: json["mealNameEn"],
+        photoUrlLocal: json["photoUrlLocal"],
+        photoUrl: json["photoUrl"],
+        mealDetailsAr: json["mealDetailsAr"],
+        mealDetailsEn: json["mealDetailsEn"],
+        price: json["price"],
+        count: (data["count"]!=null)?json["count"]:0,
+        category: (data["category"]!=null)?json["category"]:"");
+  }
+  Map<String,dynamic> toJson()=>{
+    'id':id,
+    'mealDetailsAr':mealDetailsAr,
+    'mealNameEn':mealNameEn,
+    'mealNameAr':mealNameAr,
+    'photoUrl':photoUrl,
+    'photoUrlLocal':photoUrlLocal,
+    'mealDetailsAr':mealDetailsAr,
+    'price':price,
+    'count':count,
+    'category':category,
+    'mealDetailsEn':mealDetailsEn,
+  };
+}
+//Meals
+class Meals {
+  List<Meal> meals;
+  //DateTime date;
+
+  Meals({
+    required this.meals
+  });
+  factory Meals.fromJson( json){
+    List<Meal> tempList = [];
+    for(int i=0;i<json.length;i++){
+      Meal temp=Meal.fromJson(json[i]);
+      temp.id=json[i].id;
+      tempList.add(temp);
+    }
+    return Meals(
+        meals: tempList
+    );
+  }
+  Map<String,dynamic> toJson(){
+    List<Map<String,dynamic>> tempList = [];
+    for(Meal meal in meals){
+      tempList.add(meal.toJson());
+    }
+    return {
+      'meals':tempList,
+    };
+  }
+}
+
+//Order
+class Order {
+  String id;
+  Meals meal;
+  String orderNotes;
+  DateTime orderTime;
+  String orderId;
+  int count=0;
+
+  Order(
+      { this.id="",
+        required this.meal,
+        required this.orderId,
+        this.orderNotes="",
+        this.count=0,
+        required this.orderTime,});
+  factory Order.fromJson( json){
+    var data=json.data();
+    return Order(
+        id: json['id'],
+        meal: json["meal"],
+        orderId: json["orderId"],
+        orderNotes: json["orderNotes"],
+        count: json["count"],
+        orderTime: json["orderTime"],
+       );
+  }
+  Map<String,dynamic> toJson()=>{
+    'id':id,
+    'meal':meal,
+    'orderId':orderId,
+    'orderNotes':orderNotes,
+    'count':count,
+    'orderTime':orderTime,
+  };
+}
+
+//Orders
+class Orders {
+  String id;
+  String idUser;
+  Map<String,Order> orders;
+  DateTime orderTime;
+  String orderNotes;
+  Orders({
+    required this.orders,
+    required this.id,
+    required this.idUser,
+    required this.orderTime,
+     this.orderNotes="",
+  });
+  factory Orders.fromJson( json){
+    Map<String,Order> tempMap = {};
+    for(String orderKey in json["orders"].keys){
+      Order temp=Order.fromJson(json["orders"][orderKey]);
+      tempMap[orderKey]=temp;
+    }
+    return Orders(
+        id: json["id"],
+        orders: tempMap,
+      idUser: json["idUser"],
+      orderTime: json["orderTime"],
+      orderNotes: json["orderNotes"],
+    );
+  }
+  Map<String,dynamic> toJson(){
+    Map tempMap = {};
+    for(String orderKey in orders.keys){
+      tempMap[orderKey]=orders[orderKey]?.toJson();
+    }
+    return {
+      'orders':tempMap,
+      'id':id,
+      'idUser':idUser,
+      'orderTime':orderTime,
+      'orderNotes':orderNotes,
+    };
+  }
+}
+
+//Meals
+class ListOrders {
+  List<Orders> listOrders;
+  //DateTime date;
+
+  ListOrders({
+    required this.listOrders
+  });
+  factory ListOrders.fromJson( json){
+    List<Orders> tempList = [];
+    for(int i=0;i<json.length;i++){
+      Orders temp=Orders.fromJson(json[i]);
+      temp.id=json[i].id;
+      tempList.add(temp);
+    }
+    return ListOrders(
+        listOrders: tempList
+    );
+  }
+  Map<String,dynamic> toJson(){
+    List<Map<String,dynamic>> tempList = [];
+    for(Orders orders in listOrders){
+      tempList.add(orders.toJson());
+    }
+    return {
+      'listOrders':tempList,
+    };
+  }
+}
+
 
 /*
 flutter pub run easy_localization:generate -S "assets/translations/" -O "lib/translations"

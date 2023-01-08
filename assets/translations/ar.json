@@ -18,6 +18,7 @@
   "salad": "السلطات",
   "main_dishes": "الأطباق الرئيسية",
   "appetizer" : "المقبلات",
+  "select_category": "اختر صنفا",
   "field_required" : "هذا الحقل مطلوب*",
   "enter_strong_password" : "أدخل كلمة مرور أقوى*",
   "enter_valid_phone_number": "أدخل رقم هاتف صحيح*",
@@ -63,7 +64,7 @@
   "meal_details_en": "مكونات الوجبة بالانكليزي",
   "meal_name_pic": "صورة الوجية",
   "meal_price": "سعر الوجبة",
-
+  "no_dishes_category": "لا يوجد أطباق في هذا الصنف",
 
   "toast": "",
   "toast_successfully_created": "تم إنشاء الحساب بنجاح",

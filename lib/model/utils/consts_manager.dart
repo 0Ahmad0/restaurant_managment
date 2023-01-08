@@ -22,8 +22,8 @@ class AppConstants {
       "";
   static String photoProfileChef =
       "";
-  static String photoGroup =
-      "";
+  static String photoMeal =
+      "https://firebasestorage.googleapis.com/v0/b/restaurant-managment-1e121.appspot.com/o/Meal%2Fmeal.jpg?alt=media&token=ac3024ed-2291-4af7-bf0f-4e552b8d155e";
   static String imagesGroup ="Groups/Images/";
   static String filesGroup ="Groups/Files/";
   static String audiosGroup ="Groups/Audios/";
@@ -34,7 +34,7 @@ class AppConstants {
   static String collectionAdmin = "Admin";
   static String collectionChef = "Chef";
   static String collectionUser = "User";
-  static String collectionHeritage = "Heritage";
+  static String collectionMeal = "Meal";
   static String collectionHeritageCategory = "HeritageCategory";
   static String collectionReportHeritage = "ReportHeritage";
   static String collectionHeritageTypes = "HeritageTypes";

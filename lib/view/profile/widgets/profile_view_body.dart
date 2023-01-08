@@ -172,6 +172,9 @@ class _ProfileViewState extends State<ProfileViewBody> {
                   // ),
                   const SizedBox(height: AppSize.s20,),
                   ButtonApp(text: tr(LocaleKeys.edit_password), onPressed: (){
+                    final passwordController = TextEditingController();
+                    final confirmPasswordController = TextEditingController();
+                    final formKey = GlobalKey<FormState>();
                     Get.dialog(
                         Center(
                           child: Material(
@@ -184,24 +187,49 @@ class _ProfileViewState extends State<ProfileViewBody> {
                                   color: ColorManager.white,
                                   borderRadius: BorderRadius.circular(AppSize.s24)
                               ),
-                              child: Column(
-                                children: [
-                                  TextFiledApp(
-                                      iconData: Icons.lock,
-                                      hintText: tr(LocaleKeys.new_password)
-                                  ),
-                                  TextFiledApp(
-                                      iconData: Icons.lock,
-                                      hintText: tr(LocaleKeys.confirm_new_password)
-                                  ),
-                                  Spacer(),
-                                  ButtonApp(text: tr(LocaleKeys.done),
-                                      onPressed: () async {
+                              child: Form(
+                                key: formKey,
+                                child: Column(
+                                  children: [
+                                    TextFiledApp(
+                                      controller: passwordController,
+                                        iconData: Icons.lock,
+                                        hintText: tr(LocaleKeys.new_password),
+                                      validator: (value){
+                                        if(value!.trim().isEmpty)
+                                          return tr(LocaleKeys.field_required);
+                                        return null;
+                                      },
+                                    ),
+                                    TextFiledApp(
+                                      controller: confirmPasswordController,
+                                        iconData: Icons.lock,
+                                        hintText: tr(LocaleKeys.confirm_new_password),
+                                      validator: (value){
+                                        if(value!.trim().isEmpty)
+                                          return tr(LocaleKeys.field_required);
+                                        if(confirmPasswordController.text.compareTo(passwordController.text)!=0)
+                                          return tr(LocaleKeys.enter_matched_password);
+                                        return null;
+                                      },
+
+                                    ),
+                                    Spacer(),
+                                    ButtonApp(text: tr(LocaleKeys.done),
+                                        onPressed: () async {
+                                      if(formKey.currentState!.validate()){
                                         Const.LOADIG(context);
-                                        final result =await authProvider.sendPasswordResetEmail(context, resetEmail: widget.profileProvider.user.email);
+                                        widget.profileProvider.user.password=passwordController.text;
+                                        final result =await authProvider.recoveryPassword(context, user: widget.profileProvider.user);
                                         Get.back();
-                                      })
-                                ],
+                                        Get.back();
+                                      }else{
+                                        Get.snackbar("Error", "Please enter same password");
+                                      }
+
+                                        })
+                                  ],
+                                ),
                               ),
                             ),
                           ),

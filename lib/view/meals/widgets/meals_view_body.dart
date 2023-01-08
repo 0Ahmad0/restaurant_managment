@@ -1,5 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:restaurant_managment/model/models.dart';
 import 'package:restaurant_managment/translations/locale_keys.g.dart';
 import 'package:restaurant_managment/view/manager/widgets/ShadowContainer.dart';
 import 'package:restaurant_managment/view/resourse/color_manager.dart';
@@ -11,8 +13,9 @@ import '../../manager/const.dart';
 import 'meal_item.dart';
 
 class MealsViewBody extends StatelessWidget {
-  const MealsViewBody({Key? key, required this.image}) : super(key: key);
+  const MealsViewBody({Key? key, required this.image,required this.meals}) : super(key: key);
   final String image;
+  final List meals;
   @override
   Widget build(BuildContext context) {
     return Material(
@@ -36,12 +39,12 @@ class MealsViewBody extends StatelessWidget {
                 )),
             Expanded(
                 child: ListView.builder(
-              itemCount: ConstApp.meals.length,
+              itemCount: meals.length,
               itemBuilder: (_, index) {
                 return MealItem(
-                  name: ConstApp.meals[index].name,
-                  price: ConstApp.meals[index].price,
-                  ingredients: ConstApp.meals[index].ingredients,
+                  name: (Advance.language)? meals[index].mealNameAr:meals[index].mealNameEn,
+                  price: meals[index].price,//ConstApp.meals[index].price,
+                  ingredients:[(Advance.language)? meals[index].mealDetailsAr:meals[index].mealDetailsEn],
                 );
               },
             ))

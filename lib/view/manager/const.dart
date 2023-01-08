@@ -17,115 +17,110 @@ class ConstApp {
   };
 
   static List<Meal> meals = [
+    // Meal(
+    //   name: 'FRIED KIBBEH',
+    //   price: '46.00',
+    //   ingredients: [
+    //     'Finely' 'ground bulgur',
+    //     'stuffed onion',
+    //     'lamb and beef',
+    //     'labneh and spicy tomato sauce'
+    //   ],
+    // ),
+    // Meal(
+    //   name: 'BATATA HARRA',
+    //   price: '55.00',
+    //   ingredients: [
+    //     'Fried Potatoes',
+    //     'Tossed With Garlic And Flavorful',
+    //     'Herbs And Spices',
+    //     'PASTA & CHEESE BALLS'
+    //   ],
+    // ),
+    // Meal(
+    //   name: 'FRIED KIBBEH',
+    //   price: '46.00',
+    //   ingredients: [
+    //     'Finely' 'ground bulgur',
+    //     'stuffed onion',
+    //     'lamb and beef',
+    //     'labneh and spicy tomato sauce'
+    //   ],
+    // ),
+    // Meal(
+    //   name: 'BATATA HARRA',
+    //   price: '55.00',
+    //   ingredients: [
+    //     'Fried Potatoes',
+    //     'Tossed With Garlic And Flavorful',
+    //     'Herbs And Spices',
+    //     'PASTA & CHEESE BALLS'
+    //   ],
+    // ),
+    // Meal(
+    //   name: 'FRIED KIBBEH',
+    //   price: '46.00',
+    //   ingredients: [
+    //     'Finely' 'ground bulgur',
+    //     'stuffed onion',
+    //     'lamb and beef',
+    //     'labneh and spicy tomato sauce'
+    //   ],
+    // ),
+    // Meal(
+    //   name: 'BATATA HARRA',
+    //   price: '55.00',
+    //   ingredients: [
+    //     'Fried Potatoes',
+    //     'Tossed With Garlic And Flavorful',
+    //     'Herbs And Spices',
+    //     'PASTA & CHEESE BALLS'
+    //   ],
+    // ),
+    // Meal(
+    //   name: 'FRIED KIBBEH',
+    //   price: '46.00',
+    //   ingredients: [
+    //     'Finely' 'ground bulgur',
+    //     'stuffed onion',
+    //     'lamb and beef',
+    //     'labneh and spicy tomato sauce'
+    //   ],
+    // ),
+    // Meal(
+    //   name: 'BATATA HARRA',
+    //   price: '55.00',
+    //   ingredients: [
+    //     'Fried Potatoes',
+    //     'Tossed With Garlic And Flavorful',
+    //     'Herbs And Spices',
+    //     'PASTA & CHEESE BALLS'
+    //   ],
+    // ),
+    // Meal(
+    //   name: 'FRIED KIBBEH',
+    //   price: '46.00',
+    //   ingredients: [
+    //     'Finely' 'ground bulgur',
+    //     'stuffed onion',
+    //     'lamb and beef',
+    //     'labneh and spicy tomato sauce'
+    //   ],
+    // ),
+    // Meal(
+    //   name: 'BATATA HARRA',
+    //   price: '55.00',
+    //   ingredients: [
+    //     'Fried Potatoes',
+    //     'Tossed With Garlic And Flavorful',
+    //     'Herbs And Spices',
+    //     'PASTA & CHEESE BALLS'
+    //   ],
+    // ),
     Meal(
-      name: 'FRIED KIBBEH',
+
       price: '46.00',
-      ingredients: [
-        'Finely' 'ground bulgur',
-        'stuffed onion',
-        'lamb and beef',
-        'labneh and spicy tomato sauce'
-      ],
-    ),
-    Meal(
-      name: 'BATATA HARRA',
-      price: '55.00',
-      ingredients: [
-        'Fried Potatoes',
-        'Tossed With Garlic And Flavorful',
-        'Herbs And Spices',
-        'PASTA & CHEESE BALLS'
-      ],
-    ),
-    Meal(
-      name: 'FRIED KIBBEH',
-      price: '46.00',
-      ingredients: [
-        'Finely' 'ground bulgur',
-        'stuffed onion',
-        'lamb and beef',
-        'labneh and spicy tomato sauce'
-      ],
-    ),
-    Meal(
-      name: 'BATATA HARRA',
-      price: '55.00',
-      ingredients: [
-        'Fried Potatoes',
-        'Tossed With Garlic And Flavorful',
-        'Herbs And Spices',
-        'PASTA & CHEESE BALLS'
-      ],
-    ),
-    Meal(
-      name: 'FRIED KIBBEH',
-      price: '46.00',
-      ingredients: [
-        'Finely' 'ground bulgur',
-        'stuffed onion',
-        'lamb and beef',
-        'labneh and spicy tomato sauce'
-      ],
-    ),
-    Meal(
-      name: 'BATATA HARRA',
-      price: '55.00',
-      ingredients: [
-        'Fried Potatoes',
-        'Tossed With Garlic And Flavorful',
-        'Herbs And Spices',
-        'PASTA & CHEESE BALLS'
-      ],
-    ),
-    Meal(
-      name: 'FRIED KIBBEH',
-      price: '46.00',
-      ingredients: [
-        'Finely' 'ground bulgur',
-        'stuffed onion',
-        'lamb and beef',
-        'labneh and spicy tomato sauce'
-      ],
-    ),
-    Meal(
-      name: 'BATATA HARRA',
-      price: '55.00',
-      ingredients: [
-        'Fried Potatoes',
-        'Tossed With Garlic And Flavorful',
-        'Herbs And Spices',
-        'PASTA & CHEESE BALLS'
-      ],
-    ),
-    Meal(
-      name: 'FRIED KIBBEH',
-      price: '46.00',
-      ingredients: [
-        'Finely' 'ground bulgur',
-        'stuffed onion',
-        'lamb and beef',
-        'labneh and spicy tomato sauce'
-      ],
-    ),
-    Meal(
-      name: 'BATATA HARRA',
-      price: '55.00',
-      ingredients: [
-        'Fried Potatoes',
-        'Tossed With Garlic And Flavorful',
-        'Herbs And Spices',
-        'PASTA & CHEESE BALLS'
-      ],
-    ),
-    Meal(
-      name: 'FRIED KIBBEH',
-      price: '46.00',
-      ingredients: [
-        'Finely' 'ground bulgur',
-        'stuffed onion',
-        'lamb and beef',
-        'labneh and spicy tomato sauce'
-      ],
+       mealNameAr: '', mealNameEn: '', photoUrl: '', mealDetailsAr: '', mealDetailsEn: '', category: '',
     ),
   ];
 

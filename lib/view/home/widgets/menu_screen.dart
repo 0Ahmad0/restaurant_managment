@@ -3,7 +3,8 @@ import 'dart:io';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:restaurant_managment/view/add_meal/add_meal_view.dart';
+
+import '../../admin/add_meal/add_meal_view.dart';
 import '/view/confirms_order/confirm_order_view.dart';
 import '/view/profile/profile_view.dart';
 import '/view/setting/setting_view.dart';

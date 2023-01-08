@@ -36,6 +36,7 @@
   "camera": "Camera",
   "gallery": "Gallery",
   "remove": "remove",
+  "select_category": "Select Category",
   "expired_orders": "Expired orders",
   "current_orders": "Current orders",
   "order_status": "Order Status",
@@ -62,6 +63,7 @@
   "meal_details_en": "Meal ingredients english",
   "meal_name_pic": "Meal image",
   "meal_price": "Meal price",
+  "no_dishes_category": "There are no dishes in this category",
 
 
   "toast": "",
