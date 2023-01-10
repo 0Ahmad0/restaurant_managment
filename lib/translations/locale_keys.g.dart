@@ -67,6 +67,7 @@ abstract class  LocaleKeys {
   static const meal_name_pic = 'meal_name_pic';
   static const meal_price = 'meal_price';
   static const no_dishes_category = 'no_dishes_category';
+  static const no_dishes_cart = 'no_dishes_cart';
   static const toast = 'toast';
   static const toast_successfully_created = 'toast_successfully_created';
   static const toast_successfully_update = 'toast_successfully_update';

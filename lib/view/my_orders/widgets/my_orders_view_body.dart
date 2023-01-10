@@ -1,10 +1,13 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:restaurant_managment/controller/utils/function_helper_view_provider.dart';
 import 'package:restaurant_managment/translations/locale_keys.g.dart';
 import 'package:restaurant_managment/view/manager/widgets/button_app.dart';
 import 'package:restaurant_managment/view/resourse/color_manager.dart';
 import 'package:restaurant_managment/view/resourse/values_manager.dart';
 import 'package:sizer/sizer.dart';
+import '../../../controller/order_provider.dart';
 import 'build_my_order_item.dart';
 
 class MyOrdersViewBody extends StatelessWidget {
@@ -12,21 +15,27 @@ class MyOrdersViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
+    return
+      ChangeNotifierProvider<OrderProvider>.value(
+        value: Provider.of<OrderProvider>(context),
+        child: Consumer<OrderProvider>(
+            builder: (context, value, child) =>
+      Stack(
       alignment: Alignment.bottomCenter,
       children: [
         ListView.builder(
           padding: const EdgeInsets.only(
             bottom: AppPadding.p40
           ),
-          itemCount: 10,
+          itemCount: value.orders.orders.length,
           itemBuilder: (ctx, index) {
             return BuildMyOrderItem(
-              numberOrder: '${index + 1}',
-              tableOrder: '$index A',
+              index: index,
+              numberOrder: '${value.orders.orders.values.elementAt(index).orderId}',
+              tableOrder: '${value.orders.orders.values.length} A',
               timeOrder: DateTime.now(),
-              notesOrder: 'بدون ماينوز وكثر الحد',
-              nameOrder: "بطاطا حارة",
+              notesOrder: '${value.orders.orders.values.elementAt(index).orderNotes}',//'بدون ماينوز وكثر الحد',
+              nameOrder: "${FunctionHelperViewProvider.chooseNameByLanguage(ar: value.orders.orders.values.elementAt(index).meal?.mealNameAr, en: value.orders.orders.values.elementAt(index).meal?.mealNameEn)}",
             );
           },
         ),
@@ -34,11 +43,11 @@ class MyOrdersViewBody extends StatelessWidget {
           color: ColorManager.primaryColor,
           child: ButtonApp(
               text: tr(LocaleKeys.total_amount) +
-                  ' : ${153.5}' +
+                  ' : ${value.orders.totalPrice}' +
                   tr(LocaleKeys.sr),
               onPressed: null),
         )
       ],
-    );
+    )));
   }
 }

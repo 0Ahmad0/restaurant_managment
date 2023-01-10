@@ -1,8 +1,14 @@
+
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:restaurant_managment/model/models.dart';
+import 'package:restaurant_managment/model/models.dart' as model;
 import 'package:restaurant_managment/view/manager/const.dart';
 import 'package:sizer/sizer.dart';
 
+import '../../../controller/order_provider.dart';
 import '../../../translations/locale_keys.g.dart';
 import '../../resourse/color_manager.dart';
 import '../../resourse/style_manager.dart';
@@ -14,13 +20,16 @@ class MealItem extends StatelessWidget {
     required this.name,
     required this.price,
     required this.ingredients,
+    required this.meal,
   }) : super(key: key);
   final String name;
   final String price;
+  final Meal meal;
   final List<String> ingredients;
 
   @override
   Widget build(BuildContext context) {
+    OrderProvider orderProvider= Provider.of<OrderProvider>(context);
     return Card(
       elevation: AppSize.s12,
       shadowColor: ColorManager.primaryColor.withOpacity(.5),
@@ -64,8 +73,15 @@ class MealItem extends StatelessWidget {
               left: 5.sp,
               child: GestureDetector(
                 onTap: (){
-                  print('add sucess');
+               //   print('add sucess');
                   ConstApp.myOrder.addAll({});
+                  if(!orderProvider.orders.orders.containsKey(meal.id)){
+                    orderProvider.orders.orders[meal.id]=model.Order(meal: meal, orderId:"${Timestamp.now().seconds}", orderTime: DateTime.now(),count: 1);
+                  }
+                  else
+                    orderProvider.orders.orders[meal.id]?.count++;
+                  orderProvider.orders.totalPrice='${int.parse(orderProvider.orders.totalPrice)+int.parse(meal.price)}';
+                  orderProvider.notifyListeners();
                 },
                 child: CircleAvatar(
                   radius: 10.sp,

@@ -198,6 +198,15 @@ class FirebaseFun{
     return result;
   }
 
+  ///Order
+  static addOrder( {required model.Orders orders}) async {
+    final result= await FirebaseFirestore.instance.collection(AppConstants.collectionOrder).add(
+        orders.toJson()
+    ).then(onValueAddOrder).catchError(onError).timeout(timeOut,onTimeout: onTimeOut);
+    return result;
+  }
+
+
    static Future<Map<String,dynamic>>  onError(error) async {
     print(false);
     print(error);
@@ -262,6 +271,13 @@ class FirebaseFun{
     return {
       'status':true,
       'message':'Meal successfully add',
+      'body':{}
+    };
+  }
+  static Future<Map<String,dynamic>>onValueAddOrder(value) async{
+    return {
+      'status':true,
+      'message':'Order successfully add',
       'body':{}
     };
   }

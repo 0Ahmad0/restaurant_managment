@@ -94,7 +94,7 @@ class _MenuScreenState extends State<MenuScreen> {
                 ClipOval(
                   child: CachedNetworkImage(
                     fit: BoxFit.fill,
-                    width: Sizer.getW(context) * 0.12,
+                    widt0h: Sizer.getW(context) * 0.12,
                     height: Sizer.getW(context) * 0.12,
                     imageUrl:
                     // "${AppUrl.baseUrlImage}${widget.restaurant.imageLogo!}",

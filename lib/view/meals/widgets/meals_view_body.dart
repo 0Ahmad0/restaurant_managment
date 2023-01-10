@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:restaurant_managment/controller/order_provider.dart';
 import 'package:restaurant_managment/model/models.dart';
 import 'package:restaurant_managment/translations/locale_keys.g.dart';
 import 'package:restaurant_managment/view/manager/widgets/ShadowContainer.dart';
@@ -16,6 +17,7 @@ class MealsViewBody extends StatelessWidget {
   const MealsViewBody({Key? key, required this.image,required this.meals}) : super(key: key);
   final String image;
   final List meals;
+
   @override
   Widget build(BuildContext context) {
     return Material(
@@ -45,6 +47,7 @@ class MealsViewBody extends StatelessWidget {
                   name: (Advance.language)? meals[index].mealNameAr:meals[index].mealNameEn,
                   price: meals[index].price,//ConstApp.meals[index].price,
                   ingredients:[(Advance.language)? meals[index].mealDetailsAr:meals[index].mealDetailsEn],
+                  meal:meals[index]
                 );
               },
             ))

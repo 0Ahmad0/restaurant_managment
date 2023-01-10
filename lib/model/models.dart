@@ -172,7 +172,7 @@ class Meals {
 //Order
 class Order {
   String id;
-  Meals meal;
+  Meal? meal;
   String orderNotes;
   DateTime orderTime;
   String orderId;
@@ -189,7 +189,7 @@ class Order {
     var data=json.data();
     return Order(
         id: json['id'],
-        meal: json["meal"],
+        meal: Meal.fromJson(json["meal"]),
         orderId: json["orderId"],
         orderNotes: json["orderNotes"],
         count: json["count"],
@@ -198,7 +198,7 @@ class Order {
   }
   Map<String,dynamic> toJson()=>{
     'id':id,
-    'meal':meal,
+    'meal':meal?.toJson(),
     'orderId':orderId,
     'orderNotes':orderNotes,
     'count':count,
@@ -213,12 +213,18 @@ class Orders {
   Map<String,Order> orders;
   DateTime orderTime;
   String orderNotes;
+  String orderId;
+  String totalPrice;
+  String status;
   Orders({
     required this.orders,
     required this.id,
     required this.idUser,
     required this.orderTime,
      this.orderNotes="",
+     this.status="current",
+     this.orderId="",
+     this.totalPrice="0",
   });
   factory Orders.fromJson( json){
     Map<String,Order> tempMap = {};
@@ -230,8 +236,11 @@ class Orders {
         id: json["id"],
         orders: tempMap,
       idUser: json["idUser"],
+      orderId: json["orderId"],
       orderTime: json["orderTime"],
       orderNotes: json["orderNotes"],
+      status: json["status"],
+      totalPrice: json["totalPrice"],
     );
   }
   Map<String,dynamic> toJson(){
@@ -243,8 +252,11 @@ class Orders {
       'orders':tempMap,
       'id':id,
       'idUser':idUser,
+      'orderId':orderId,
       'orderTime':orderTime,
+      'status':status,
       'orderNotes':orderNotes,
+      'totalPrice':totalPrice,
     };
   }
 }
@@ -277,6 +289,11 @@ class ListOrders {
       'listOrders':tempList,
     };
   }
+}
+enum StateOrder{
+  expired,
+  current,
+  rejected
 }
 
 

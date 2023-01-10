@@ -18,6 +18,7 @@ class ConfirmOrderViewBody extends StatelessWidget {
           itemBuilder: (context, index) => Stack(
             children: [
               BuildMyOrderItem(
+                index: index,
                   numberOrder: '${index + 2}',
                   tableOrder: '${index} 15AF',
                   timeOrder: DateTime.now()),
@@ -46,6 +47,7 @@ class ConfirmOrderViewBody extends StatelessWidget {
           itemBuilder: (context, index) => Stack(
             children: [
               BuildMyOrderItem(
+                index: index,
                 isOk: false,
                 numberOrder: '${index + 2}',
                 tableOrder: '${index} 15AF',

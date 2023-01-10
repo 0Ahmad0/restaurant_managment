@@ -64,7 +64,7 @@
   "meal_name_pic": "Meal image",
   "meal_price": "Meal price",
   "no_dishes_category": "There are no dishes in this category",
-
+  "no_dishes_cart": "There are no dishes in the cart",
 
   "toast": "",
   "toast_successfully_created": "Account successfully created",

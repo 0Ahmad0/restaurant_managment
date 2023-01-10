@@ -1,5 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:restaurant_managment/controller/order_provider.dart';
 import 'package:sizer/sizer.dart';
 
 import '../../../translations/locale_keys.g.dart';
@@ -15,12 +17,14 @@ class BuildMyOrderItem extends StatelessWidget {
   final DateTime timeOrder;
   final String? notesOrder;
   final String? nameOrder;
+  final int index;
   final bool isOk;
 
 
    BuildMyOrderItem(
       {super.key,
         required this.numberOrder,
+        required this.index,
         required this.tableOrder,
         required this.timeOrder,
         this.notesOrder = "",
@@ -30,6 +34,7 @@ class BuildMyOrderItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    OrderProvider orderProvider= Provider.of<OrderProvider>(context);
     return ShadowContainer(
       padding:  AppPadding.p10,
       child: Column(
@@ -42,7 +47,12 @@ class BuildMyOrderItem extends StatelessWidget {
                 "${tr(LocaleKeys.order_id)} : ${numberOrder}",
                 style: getBoldStyle(color: ColorManager.black, fontSize: 14.sp),
               ),
-              if(isOk)IconButton(onPressed: () {}, icon: Icon(Icons.delete,
+              if(isOk)IconButton(onPressed: () {
+                int priceOrder=(int.parse(orderProvider.orders.orders.values.elementAt(index).meal!.price)*orderProvider.orders.orders.values.elementAt(index).count);
+                orderProvider.orders.totalPrice='${int.parse(orderProvider.orders.totalPrice)-priceOrder}';
+                orderProvider.orders.orders.remove(orderProvider.orders.orders.keys.elementAt(index));
+                orderProvider.notifyListeners();
+              }, icon: Icon(Icons.delete,
                 size: 20.sp,
                 color: ColorManager.error,
               )),
@@ -77,7 +87,10 @@ class BuildMyOrderItem extends StatelessWidget {
           TextFiledApp(
               controller: TextEditingController(text: notesOrder),
               iconData: Icons.edit,
-              hintText: tr(LocaleKeys.order_notes))
+              hintText: tr(LocaleKeys.order_notes)
+          ,onChanged: (value){
+                orderProvider.orders.orders.values.elementAt(index).orderNotes=value;
+          },),
         ],
       ),
     );

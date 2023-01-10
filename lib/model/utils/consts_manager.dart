@@ -35,7 +35,7 @@ class AppConstants {
   static String collectionChef = "Chef";
   static String collectionUser = "User";
   static String collectionMeal = "Meal";
-  static String collectionHeritageCategory = "HeritageCategory";
+  static String collectionOrder = "Order";
   static String collectionReportHeritage = "ReportHeritage";
   static String collectionHeritageTypes = "HeritageTypes";
 
