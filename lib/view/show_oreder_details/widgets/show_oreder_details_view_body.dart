@@ -22,6 +22,7 @@ class ShowOrderDetailsViewBody extends StatelessWidget {
           itemCount: 10,
           itemBuilder: (ctx, index) {
             return BuildMyOrderItem(
+              index: index,
               numberOrder: '${index + 1}',
               tableOrder: '$index A',
               timeOrder: DateTime.now(),

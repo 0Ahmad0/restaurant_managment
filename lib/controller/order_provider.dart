@@ -14,6 +14,8 @@ import 'package:restaurant_managment/model/models.dart' as model;
 class OrderProvider extends ChangeNotifier{
   model.Order order=model.Order(meal: null, orderId: "", orderTime: DateTime.now());
   Orders orders=Orders(orders: {}, id: "", idUser: "", orderTime:  DateTime.now());
+  ListOrders listOrdersCurrent=ListOrders(listOrders: []);
+  ListOrders listOrdersExpired=ListOrders(listOrders: []);
 
   addOrder(context,{ required model.Orders orders}) async {
     orders.orderTime=DateTime.now();

@@ -80,7 +80,7 @@ class MealItem extends StatelessWidget {
                   }
                   else
                     orderProvider.orders.orders[meal.id]?.count++;
-                  orderProvider.orders.totalPrice='${int.parse(orderProvider.orders.totalPrice)+int.parse(meal.price)}';
+                  orderProvider.orders.totalPrice='${double.parse(orderProvider.orders.totalPrice)+double.parse(meal.price)}';
                   orderProvider.notifyListeners();
                 },
                 child: CircleAvatar(

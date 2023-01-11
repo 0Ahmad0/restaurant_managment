@@ -112,7 +112,7 @@ class Meal {
         required this.price,
         required this.category,});
   factory Meal.fromJson( json){
-    var data=json.data();
+    //var data=json.data();
     return Meal(
         id: json['id'],
         mealNameAr: json["mealNameAr"],
@@ -122,8 +122,10 @@ class Meal {
         mealDetailsAr: json["mealDetailsAr"],
         mealDetailsEn: json["mealDetailsEn"],
         price: json["price"],
-        count: (data["count"]!=null)?json["count"]:0,
-        category: (data["category"]!=null)?json["category"]:"");
+        //count: (json["count"]!=null)?json["count"]:0,
+     //   count: json["count"],
+        category: json["category"]);
+        //category: (json["category"]!=null)?json["category"]:"");
   }
   Map<String,dynamic> toJson()=>{
     'id':id,
@@ -186,14 +188,14 @@ class Order {
         this.count=0,
         required this.orderTime,});
   factory Order.fromJson( json){
-    var data=json.data();
+    //var data=json.data();
     return Order(
         id: json['id'],
         meal: Meal.fromJson(json["meal"]),
         orderId: json["orderId"],
         orderNotes: json["orderNotes"],
         count: json["count"],
-        orderTime: json["orderTime"],
+        orderTime: json["orderTime"].toDate(),
        );
   }
   Map<String,dynamic> toJson()=>{
@@ -237,7 +239,7 @@ class Orders {
         orders: tempMap,
       idUser: json["idUser"],
       orderId: json["orderId"],
-      orderTime: json["orderTime"],
+      orderTime: json["orderTime"].toDate(),
       orderNotes: json["orderNotes"],
       status: json["status"],
       totalPrice: json["totalPrice"],

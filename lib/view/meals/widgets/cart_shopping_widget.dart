@@ -51,7 +51,7 @@ class _CartShoppingWidgetState extends State<CartShoppingWidget> {
                         fontSize: 12.sp
                     ),),
                   onDeleted: () {
-                    value.orders.totalPrice='${int.parse( value.orders.totalPrice)-int.parse(value.orders.orders.values.elementAt(index).meal!.price)}';
+                    value.orders.totalPrice='${double.parse( value.orders.totalPrice)-double.parse(value.orders.orders.values.elementAt(index).meal!.price)}';
                     if(value.orders.orders.values.elementAt(index).count<=1)
                       value.orders.orders.remove(value.orders.orders.keys.elementAt(index));
                     else
