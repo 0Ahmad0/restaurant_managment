@@ -65,6 +65,9 @@
   "meal_price": "Meal price",
   "no_dishes_category": "There are no dishes in this category",
   "no_dishes_cart": "There are no dishes in the cart",
+  "number_of_dishes":"Number of dishes",
+  "rejected":"Rejected",
+  "number_of_all_order":"Number of Order",
 
   "toast": "",
   "toast_successfully_created": "Account successfully created",

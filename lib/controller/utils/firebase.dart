@@ -205,6 +205,17 @@ class FirebaseFun{
     ).then(onValueAddOrder).catchError(onError).timeout(timeOut,onTimeout: onTimeOut);
     return result;
   }
+  static updateOrder( {required model.Orders orders}) async {
+    final result= await FirebaseFirestore.instance.collection(AppConstants.collectionOrder).doc(
+        orders.id
+    ).update(orders.toJson()).then(onValueUpdateOrder).catchError(onError).timeout(timeOut,onTimeout: onTimeOut);
+    return result;
+  }static deleteOrder( {required model.Orders orders}) async {
+    final result= await FirebaseFirestore.instance.collection(AppConstants.collectionOrder).doc(
+        orders.id
+    ).delete().then(onValueDeleteOrder).catchError(onError).timeout(timeOut,onTimeout: onTimeOut);
+    return result;
+  }
 
 
    static Future<Map<String,dynamic>>  onError(error) async {
@@ -278,6 +289,19 @@ class FirebaseFun{
     return {
       'status':true,
       'message':'Order successfully add',
+      'body':{}
+    };
+  }static Future<Map<String,dynamic>>onValueUpdateOrder(value) async{
+    return {
+      'status':true,
+      'message':'Order successfully update',
+      'body':{}
+    };
+  }
+  static Future<Map<String,dynamic>>onValueDeleteOrder(value) async{
+    return {
+      'status':true,
+      'message':'Order successfully delete',
       'body':{}
     };
   }

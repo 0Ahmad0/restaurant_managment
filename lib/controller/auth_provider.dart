@@ -1,7 +1,9 @@
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:restaurant_managment/controller/profile_provider.dart';
 import 'package:restaurant_managment/controller/utils/firebase.dart';
+import 'package:restaurant_managment/translations/locale_keys.g.dart';
 
 import '../model/models.dart' as models;
 import '../model/models.dart';
@@ -110,6 +112,7 @@ class AuthProvider with ChangeNotifier{
       user= models.User.fromJson(result['body']);
       await AppStorage.storageWrite(key: AppConstants.idKEY, value: user.id);
       await AppStorage.storageWrite(key: AppConstants.uidKEY, value: user.uid);
+      await AppStorage.storageWrite(key: AppConstants.isLoginedKEY, value: Advance.isLogined);
       await AppStorage.storageWrite(key: AppConstants.tokenKEY, value: "resultUser['token']");
       Advance.token = user.uid;
       Advance.uid = user.uid;
@@ -159,7 +162,9 @@ class AuthProvider with ChangeNotifier{
     }
     return result;
   }
-  sendPasswordResetEmail(context,{required String resetEmail}) async{
+
+
+ sendPasswordResetEmail(context,{required String resetEmail}) async{
     var result =await FirebaseFun.sendPasswordResetEmail(email: resetEmail);
     print(result);
     Const.TOAST(context,textToast: FirebaseFun.findTextToast(result['message'].toString()));
@@ -182,5 +187,48 @@ class AuthProvider with ChangeNotifier{
       //'body':""
     };
   }
+
+  loginByTypeUser(context,{required String typeUser}) async{
+    var result=await loginWithPhoneNumberByTypeUser(context,typeUser: typeUser);
+    if(!result['status'])
+      result=await loginWithEmilByTypeUser(context,typeUser: typeUser);
+    print(result);
+    Const.TOAST(context,textToast: FirebaseFun.findTextToast(result['message'].toString()));
+    return result;
+  }
+
+  loginWithEmilByTypeUser(context,{required String typeUser}) async{
+    var resultUser =await FirebaseFun.login(email: user.email, password: user.password);
+    var result;
+    if(resultUser['status']){
+      resultUser = await fetchUserByTypeUser(uid: resultUser['body']['uid'],typeUser: typeUser);
+      result=await _baseLogin(context, resultUserAfterLog: resultUser);
+    }else{
+      result=resultUser;
+    }
+    return result;
+  }
+  loginWithPhoneNumberByTypeUser(context,{required String typeUser}) async{
+
+    var resultUser =await FirebaseFun.loginWithPhoneNumber(phoneNumber: user.email, password: user.password,typeUser: typeUser);
+    if(resultUser['status'])
+    {
+      user= models.User.fromJson(resultUser['body']);
+    }
+    var result;
+    result=await loginWithEmilByTypeUser(context,typeUser: typeUser);
+    return result;
+  }
+  fetchUserByTypeUser({required String uid,required typeUser}) async {
+    var  result = await FirebaseFun.fetchUser(uid: uid, typeUser: typeUser);
+    if(result['status']&&result['body']==null){
+      result={
+        'status':false,
+        'message': "account invalid"//LocaleKeys.toast_account_invalid,
+      };
+    }
+    return result;
+  }
+
 }
 

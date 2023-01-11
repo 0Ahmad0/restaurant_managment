@@ -4,6 +4,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
 import 'package:get/get.dart';
+import 'package:provider/provider.dart';
 import 'package:restaurant_managment/model/utils/const.dart';
 import 'package:restaurant_managment/model/utils/consts_manager.dart';
 import 'package:restaurant_managment/view/home/widgets/menu_container.dart';
@@ -15,6 +16,7 @@ import 'package:restaurant_managment/view/resourse/values_manager.dart';
 import 'package:sizer/sizer.dart';
 
 import '../../../controller/meal_provider.dart';
+import '../../../controller/order_provider.dart';
 import '../../../controller/utils/firebase.dart';
 import '../../../model/models.dart';
 import '../../../translations/locale_keys.g.dart';
@@ -47,7 +49,8 @@ class _MainScreenState extends State<MainScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButtonLocation: FloatingActionButtonLocation.miniCenterFloat,
-      floatingActionButton: CustomFloatActionButton(),
+      floatingActionButton:
+    CustomFloatActionButton(),
       appBar: AppBar(
         leading: IconButton(
           onPressed: () {

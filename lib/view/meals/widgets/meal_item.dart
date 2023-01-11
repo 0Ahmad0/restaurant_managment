@@ -76,10 +76,13 @@ class MealItem extends StatelessWidget {
                //   print('add sucess');
                   ConstApp.myOrder.addAll({});
                   if(!orderProvider.orders.orders.containsKey(meal.id)){
-                    orderProvider.orders.orders[meal.id]=model.Order(meal: meal, orderId:"${Timestamp.now().seconds}", orderTime: DateTime.now(),count: 1);
+                    orderProvider.orders.orders[meal.id]=model.Order(meal: meal, orderId:"${orderProvider.genOrderId()}", orderTime: DateTime.now(),count: 1);
                   }
                   else
                     orderProvider.orders.orders[meal.id]?.count++;
+
+                  if(  orderProvider.orders.orderTable=="")
+                    orderProvider.orders.orderTable=   orderProvider.genOrderTable() ;
                   orderProvider.orders.totalPrice='${double.parse(orderProvider.orders.totalPrice)+double.parse(meal.price)}';
                   orderProvider.notifyListeners();
                 },

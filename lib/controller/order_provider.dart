@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
@@ -19,13 +21,44 @@ class OrderProvider extends ChangeNotifier{
 
   addOrder(context,{ required model.Orders orders}) async {
     orders.orderTime=DateTime.now();
-    orders.orderId=Timestamp.now().seconds.toString();
+    //orders.orderId=Timestamp.now().seconds.toString();
+    orders.orderId= genOrderId() ;
+    if(orders.orderTable.contains=="")
+    orders.orderTable= genOrderTable() ;
     final result =await FirebaseFun.addOrder(orders: orders);
     print(result);
     Const.TOAST(context,textToast: FirebaseFun.findTextToast(result['message'].toString()));
     return result;
   }
-  
+  updateOrder(context,{ required model.Orders orders}) async {
+
+    final result =await FirebaseFun.updateOrder(orders: orders);
+
+    Const.TOAST(context,textToast: FirebaseFun.findTextToast(result['message'].toString()));
+    return result;
+  }
+  deleteOrder(context,{ required model.Orders orders}) async {
+
+    final result =await FirebaseFun.deleteOrder(orders: orders);
+
+    Const.TOAST(context,textToast: FirebaseFun.findTextToast(result['message'].toString()));
+    return result;
+  }
+  genOrderId(){
+    Random random=Random();
+    String orderId='';
+    for(int i=0;i<3;i++)
+    orderId+='${random.nextInt(10)}';
+    return orderId;
+  }
+  genOrderTable(){
+    Random random=Random();
+    String orderTable='';
+    List char=['A','C','D'];
+    orderTable+='${char[random.nextInt(2)]}';
+    orderTable+='${random.nextInt(10)}';
+    return orderTable;
+  }
   // updateMeal({ required Meal meal}){
   //
   //   this.user=user;

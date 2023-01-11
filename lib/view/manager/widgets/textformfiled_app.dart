@@ -48,7 +48,6 @@ class _TextFiledAppState extends State<TextFiledApp> {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-
       autofocus: widget.autofocus,
       validator: widget.validator??(String? val){
         if(val!.trim().isEmpty) return tr(LocaleKeys.field_required);

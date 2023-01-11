@@ -14,7 +14,13 @@ class CustomFloatActionButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
+    return
+      ChangeNotifierProvider<OrderProvider>.value(
+          value: Provider.of<OrderProvider>(context),
+          child: Consumer<OrderProvider>(
+              builder: (context, value, child) =>
+          value.orders.orders.length>0?
+      GestureDetector(
       onTap: ()=>ConstApp.showModalBottomSheetCart(context),
       child: Stack(
         children: [
@@ -47,6 +53,6 @@ class CustomFloatActionButton extends StatelessWidget {
               )),))
         ],
       ),
-    );
+    ):SizedBox()));
   }
 }

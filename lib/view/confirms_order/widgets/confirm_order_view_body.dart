@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 import 'package:restaurant_managment/controller/order_provider.dart';
 import 'package:restaurant_managment/model/models.dart';
@@ -8,6 +9,7 @@ import 'package:restaurant_managment/translations/locale_keys.g.dart';
 import 'package:restaurant_managment/view/my_orders/widgets/build_my_order_item.dart';
 import 'package:restaurant_managment/view/resourse/color_manager.dart';
 import 'package:restaurant_managment/view/resourse/style_manager.dart';
+import 'package:restaurant_managment/view/show_oreder_details/show_oreder_details_view.dart';
 import 'package:sizer/sizer.dart';
 
 import '../../../controller/profile_provider.dart';
@@ -53,19 +55,19 @@ class _ConfirmOrderViewBodyState extends State<ConfirmOrderViewBody> {
     return getListOrderCurrent;
   }
   getListOrderExpiredFun() async {
-
     if(profileProvider.user.typeUser.contains(AppConstants.collectionUser)){
       getListOrderExpired = FirebaseFirestore.instance
           .collection(AppConstants.collectionOrder)
           .where("idUser",isEqualTo:profileProvider.user.id )
-          .where("status",isEqualTo: StateOrder.expired.name)
+    .where("status",whereIn: [StateOrder.expired.name,StateOrder.rejected.name])
           .snapshots();
+
     }
 
     else if(profileProvider.user.typeUser.contains(AppConstants.collectionChef)){
       getListOrderExpired = FirebaseFirestore.instance
           .collection(AppConstants.collectionOrder)
-          .where("status",isEqualTo: StateOrder.expired.name)
+          .where("status",whereIn: [StateOrder.expired.name,StateOrder.rejected.name])
           .snapshots();
     }
 
@@ -94,6 +96,7 @@ class _ConfirmOrderViewBodyState extends State<ConfirmOrderViewBody> {
                   return const Text('Error');
                 } else if (snapshot.hasData) {
                   Const.SHOWLOADINGINDECATOR();
+                  orderProvider.listOrdersCurrent=ListOrders.fromJson(snapshot.data!.docs);
                   print( 'list Orders Current : ${orderProvider.listOrdersCurrent.listOrders.length}');
                   return buildOrderCurrent(context);
                   /// }));
@@ -123,6 +126,7 @@ class _ConfirmOrderViewBodyState extends State<ConfirmOrderViewBody> {
                   return const Text('Error');
                 } else if (snapshot.hasData) {
                   Const.SHOWLOADINGINDECATOR();
+                  orderProvider.listOrdersExpired=ListOrders.fromJson(snapshot.data!.docs);
                   print( 'list Orders Expired : ${orderProvider.listOrdersExpired.listOrders.length}');
                   return buildOrderExpired(context);
                   /// }));
@@ -141,21 +145,27 @@ class _ConfirmOrderViewBodyState extends State<ConfirmOrderViewBody> {
     return ListView.builder(
       itemCount: orderProvider.listOrdersCurrent.listOrders.length,
       itemBuilder: (context, index) {
-        orderProvider.orders = orderProvider.listOrdersCurrent.listOrders[index];
         return Stack(
         children: [
-          BuildMyOrderItem(
+          InkWell(
+            onTap: ()=>Get.to(()=>ShowOrderDetailsView(
+                index:index,
+               orders: orderProvider.listOrdersCurrent.listOrders[index]
+            )),
+            child: BuildMyOrder(
               index: index,
-              numberOrder: '${orderProvider.listOrdersCurrent.listOrders[index].orderId}',
-              tableOrder: '${index} 15AF',
-              timeOrder: orderProvider.listOrdersCurrent.listOrders[index].orderTime),
+              isOk: true,
+            ),
+          ),
           if(profileProvider.user.typeUser.contains(AppConstants.collectionChef))Positioned(
             left: 10.sp,
             bottom: 10.sp,
             child: GestureDetector(
-              onTap: () {
-                print(index);
-              },
+              onTap: () async {
+                orderProvider.listOrdersCurrent.listOrders[index].status=StateOrder.expired.name;
+                await orderProvider.updateOrder(context, orders:  orderProvider.listOrdersCurrent.listOrders[index]);
+                orderProvider.notifyListeners();
+                },
               child: CircleAvatar(
                 radius: 15.sp,
                 child: Icon(
@@ -174,33 +184,35 @@ class _ConfirmOrderViewBodyState extends State<ConfirmOrderViewBody> {
       itemCount: orderProvider.listOrdersExpired.listOrders.length,
       itemBuilder: (context, index) => Stack(
         children: [
-          BuildMyOrderItem(
-            index: index,
-            isOk: false,
-            numberOrder: '${orderProvider.listOrdersExpired.listOrders[index].orderId}',
-            tableOrder: '${index} 15AF',
-            timeOrder:orderProvider.listOrdersExpired.listOrders[index].orderTime,
-            nameOrder: '${index * 12 + 9 / 96} APODKj',
+          InkWell(
+            onTap: ()=>Get.to(()=>ShowOrderDetailsView(
+              index:index,
+              orders: orderProvider.listOrdersExpired.listOrders[index],
+            )),
+            child: BuildMyOrderExpired(
+              index: index,
+              isOk: false,
+            ),
           ),
           Positioned(
               left: 15.sp,
-              bottom: 0.sp,
-              child: Transform.rotate(
-                angle: -35,
-                child: Container(
-                  alignment: Alignment.center,
-                  width: 8.w,
-                  height: 20.h,
-                  color: ColorManager.success,
-                  child: Transform.rotate(
-                      angle: -1.7,
-                      child: Text(
-                        tr(LocaleKeys.done),
-                        style: getRegularStyle(
-                            color: ColorManager.white,
-                            fontSize: 14.sp
-                        ),
-                      )),
+              top: 0.sp,
+              child: Container(
+                alignment: Alignment.center,
+                width: 20.w,
+                height: 20.h,
+                decoration: BoxDecoration(
+                  color:(orderProvider.listOrdersExpired.listOrders[index].status.contains(StateOrder.rejected.name))?ColorManager.error: ColorManager.success,
+                  shape: BoxShape.circle
+                ),
+                child: Text(
+    (orderProvider.listOrdersExpired.listOrders[index].status.contains(StateOrder.rejected.name))?
+       tr(LocaleKeys.rejected)
+                  :tr(LocaleKeys.done),
+                  style: getRegularStyle(
+                      color: ColorManager.white,
+                      fontSize: 14.sp
+                  ),
                 ),
               ))
         ],

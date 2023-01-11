@@ -10,7 +10,9 @@ class SplashViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Future.delayed(Duration(seconds: 3),()=>Get.off(()=>WelcomeView()));
+    Future.delayed(Duration(seconds: 3),
+    //        ()=>Get.off(()=>WelcomeView())
+    );
     return Center(
       child: FadeInRightBig(
         child: Image.asset(AssetsManager.splashLogoIMG),

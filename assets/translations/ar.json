@@ -66,6 +66,11 @@
   "meal_price": "سعر الوجبة",
   "no_dishes_category": "لا يوجد أطباق في هذا الصنف",
   "no_dishes_cart": "لا يوجد أطباق في سلة المشتريات",
+  "number_of_dishes":"العدد الاجمالي",
+  "rejected":"مرفوض",
+  "number_of_all_order":"عدد الطلبات",
+
+
 
   "toast": "",
   "toast_successfully_created": "تم إنشاء الحساب بنجاح",

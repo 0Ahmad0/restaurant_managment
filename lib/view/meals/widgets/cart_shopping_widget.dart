@@ -62,8 +62,7 @@ class _CartShoppingWidgetState extends State<CartShoppingWidget> {
               )),
           ButtonApp(text: tr(LocaleKeys.my_orders),
               onPressed: () =>
-                  Get.to(() => MyOrdersView(),
-                      transition: Transition.size)
+                Get.to(() => MyOrdersView(),transition: Transition.size)
           )
         ],
       ),))

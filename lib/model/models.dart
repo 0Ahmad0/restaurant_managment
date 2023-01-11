@@ -216,6 +216,7 @@ class Orders {
   DateTime orderTime;
   String orderNotes;
   String orderId;
+  String orderTable;
   String totalPrice;
   String status;
   Orders({
@@ -226,6 +227,7 @@ class Orders {
      this.orderNotes="",
      this.status="current",
      this.orderId="",
+     this.orderTable="",
      this.totalPrice="0",
   });
   factory Orders.fromJson( json){
@@ -241,6 +243,7 @@ class Orders {
       orderId: json["orderId"],
       orderTime: json["orderTime"].toDate(),
       orderNotes: json["orderNotes"],
+      orderTable: json["orderTable"],
       status: json["status"],
       totalPrice: json["totalPrice"],
     );
@@ -256,6 +259,7 @@ class Orders {
       'idUser':idUser,
       'orderId':orderId,
       'orderTime':orderTime,
+      'orderTable':orderTable,
       'status':status,
       'orderNotes':orderNotes,
       'totalPrice':totalPrice,

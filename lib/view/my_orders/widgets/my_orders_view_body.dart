@@ -32,7 +32,7 @@ class MyOrdersViewBody extends StatelessWidget {
             return BuildMyOrderItem(
               index: index,
               numberOrder: '${value.orders.orders.values.elementAt(index).orderId}',
-              tableOrder: '${value.orders.orders.values.length} A',
+              tableOrder: '${value.orders.orderTable}',
               timeOrder: DateTime.now(),
               notesOrder: '${value.orders.orders.values.elementAt(index).orderNotes}',//'بدون ماينوز وكثر الحد',
               nameOrder: "${FunctionHelperViewProvider.chooseNameByLanguage(ar: value.orders.orders.values.elementAt(index).meal?.mealNameAr, en: value.orders.orders.values.elementAt(index).meal?.mealNameEn)}",
@@ -43,7 +43,7 @@ class MyOrdersViewBody extends StatelessWidget {
           color: ColorManager.primaryColor,
           child: ButtonApp(
               text: tr(LocaleKeys.total_amount) +
-                  ' : ${value.orders.totalPrice}' +
+                  ' : ${double.parse(value.orders.totalPrice).toStringAsFixed(2)}' +
                   tr(LocaleKeys.sr),
               onPressed: null),
         )

@@ -3,6 +3,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:restaurant_managment/controller/utils/create_environment_provider.dart';
+import 'package:restaurant_managment/model/utils/consts_manager.dart';
 import '../../../controller/auth_provider.dart';
 import '../../../model/models.dart';
 import '/model/utils/const.dart';
@@ -25,7 +26,9 @@ class LoginViewBody extends StatelessWidget {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
   final AuthProvider authProvider;
-  LoginViewBody({required this.authProvider});
+ 
+  final String typeUser;
+  LoginViewBody({required this.authProvider, required this.typeUser});
   @override
   Widget build(BuildContext context) {
     return ShadowContainer(
@@ -146,7 +149,7 @@ class LoginViewBody extends StatelessWidget {
                         Const.LOADIG(context);
                         authProvider.user.email=idController.text;
                         authProvider.user.password=passwordController.text;
-                        final result=await authProvider.login(context);
+                        final result=await authProvider.loginByTypeUser(context,typeUser: typeUser);
                         Get.back();
                         if(result['status'])
                           Get.to(() => HomeView(),
@@ -159,6 +162,7 @@ class LoginViewBody extends StatelessWidget {
                     },
                   ),
                 ),
+                if(typeUser.contains(AppConstants.collectionUser))
                 FadeInRightBig(
                   child: TextButton(
                     onPressed: () {
