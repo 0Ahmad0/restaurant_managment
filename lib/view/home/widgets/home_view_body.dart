@@ -6,6 +6,8 @@ import 'package:provider/provider.dart';
 import 'package:restaurant_managment/controller/profile_provider.dart';
 
 import '../../../controller/meal_provider.dart';
+import '../../../model/utils/consts_manager.dart';
+import '../../admin/show_accounts/show_accounts_view.dart';
 import '../../resourse/color_manager.dart';
 import '../../resourse/values_manager.dart';
 import 'main_screen.dart';
@@ -22,7 +24,9 @@ final ProfileProvider profileProvider;
       menuBackgroundColor: ColorManager.primaryColor,
       controller: zoomController,
       menuScreen:  MenuScreen(profileProvider:profileProvider),
-      mainScreen:  MainScreen(mealProvider:mealProvider),
+      mainScreen:  (profileProvider.user.typeUser.contains(AppConstants.collectionAdmin))?
+      ShowAccountsView()
+          :MainScreen(mealProvider:mealProvider),
       borderRadius: AppSize.s24,
       showShadow: true,
       drawerShadowsBackgroundColor: Colors.white,

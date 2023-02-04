@@ -127,7 +127,7 @@ class _MenuScreenState extends State<MenuScreen> {
               Get.to(()=>ConfirmOrderView());
             },
             icon: Icons.star_rate_outlined,
-            title: tr(LocaleKeys.evaluate_the_service),
+            title: tr(LocaleKeys.order_status),
           ),
           if(!widget.profileProvider.user.typeUser.contains(AppConstants.collectionAdmin))
           const Divider(
@@ -155,7 +155,7 @@ class _MenuScreenState extends State<MenuScreen> {
           const Divider(
             thickness: 1.5,
           ),
-          if(widget.profileProvider.user.typeUser.contains(AppConstants.collectionAdmin))
+          if(widget.profileProvider.user.typeUser.contains(AppConstants.collectionChef))
           CustomListTile(
             onTap: (){
               Get.to(()=>AddMealView());
@@ -163,7 +163,7 @@ class _MenuScreenState extends State<MenuScreen> {
             icon: Icons.restaurant_menu,
             title: tr(LocaleKeys.add_meal),
           ),
-          if(widget.profileProvider.user.typeUser.contains(AppConstants.collectionAdmin))
+          if(widget.profileProvider.user.typeUser.contains(AppConstants.collectionChef))
           const Divider(
             thickness: 1.5,
           ),

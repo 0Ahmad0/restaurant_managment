@@ -160,6 +160,13 @@ class FirebaseFun{
         .catchError(onError).timeout(timeOut,onTimeout: onTimeOut);
     return result;
   }
+  static fetchUsersByTypeUser({required String typeUser})  async {
+    final result=await FirebaseFirestore.instance.collection(typeUser)
+        .get()
+        .then((onValueFetchUsers))
+        .catchError(onError).timeout(timeOut,onTimeout: onTimeOut);
+    return result;
+  }
   static sendPasswordResetEmail( {required String email})  async {
     final result=await FirebaseAuth.instance.sendPasswordResetEmail(
       email: email,///"temp@gmail.com",

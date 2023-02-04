@@ -11,6 +11,7 @@ import '/firebase_options.dart';
 import '/view/resourse/theme_manager.dart';
 import '/view/splash/splash_view.dart';
 import 'package:sizer/sizer.dart';
+import 'controller/account_provider.dart';
 import 'controller/auth_provider.dart';
 import 'controller/home_provider.dart';
 import 'controller/profile_provider.dart';
@@ -55,6 +56,7 @@ class MyApp extends StatelessWidget {
       ListenableProvider<ProfileProvider>(create: (_)=>ProfileProvider()),
       ListenableProvider<MealProvider>(create: (_)=>MealProvider()),
       ListenableProvider<OrderProvider>(create: (_)=>OrderProvider()),
+      ListenableProvider<AccountProvider>(create: (_)=>AccountProvider()),
 
 
     ],

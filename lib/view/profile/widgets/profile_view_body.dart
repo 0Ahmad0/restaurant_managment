@@ -334,7 +334,6 @@ class _ProfileViewState extends State<ProfileViewBody> {
                     Expanded(
                       child: InkWell(
                         onTap: ()  {
-
                           removeGallery();
                           Navigator.pop(context);
                         },

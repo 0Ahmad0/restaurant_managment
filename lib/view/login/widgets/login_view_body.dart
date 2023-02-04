@@ -155,7 +155,7 @@ class LoginViewBody extends StatelessWidget {
                           Get.to(() => HomeView(),
                               transition: Transition.circularReveal);
                         FocusManager.instance.primaryFocus!.unfocus();
-                       ;
+
                       } else {
                         Get.snackbar("Error", "Please fill all");
                       }

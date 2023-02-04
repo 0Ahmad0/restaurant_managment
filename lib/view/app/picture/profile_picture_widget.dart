@@ -24,6 +24,7 @@ class WidgetProfilePicture extends StatelessWidget {
     return Container(
       alignment: Alignment.center,
       decoration: BoxDecoration(
+
         color: ColorManager.primaryColor,
         borderRadius: BorderRadius.circular(radius)
       ),

@@ -71,6 +71,10 @@ abstract class  LocaleKeys {
   static const number_of_dishes = 'number_of_dishes';
   static const rejected = 'rejected';
   static const number_of_all_order = 'number_of_all_order';
+  static const Chef = 'Chef';
+  static const User = 'User';
+  static const Admin = 'Admin';
+  static const accounts = 'accounts';
   static const toast = 'toast';
   static const toast_successfully_created = 'toast_successfully_created';
   static const toast_successfully_update = 'toast_successfully_update';

@@ -71,6 +71,10 @@
   "number_of_all_order":"عدد الطلبات",
 
 
+  "Chef": "الطاهي",
+  "User": "النادل",
+  "Admin": "المشرف",
+  "accounts": "الحسابات",
 
   "toast": "",
   "toast_successfully_created": "تم إنشاء الحساب بنجاح",

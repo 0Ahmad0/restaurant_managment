@@ -5,8 +5,10 @@ import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
 import 'package:provider/provider.dart';
 import 'package:restaurant_managment/controller/meal_provider.dart';
 import 'package:restaurant_managment/controller/profile_provider.dart';
+import 'package:restaurant_managment/model/utils/consts_manager.dart';
 import 'package:restaurant_managment/model/utils/sizer.dart';
 import 'package:restaurant_managment/translations/locale_keys.g.dart';
+import 'package:restaurant_managment/view/admin/show_accounts/show_accounts_view.dart';
 import 'package:restaurant_managment/view/resourse/color_manager.dart';
 import 'package:restaurant_managment/view/resourse/values_manager.dart';
 
@@ -19,6 +21,7 @@ class HomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     ProfileProvider profileProvider= Provider.of<ProfileProvider>(context);
+
     return Scaffold(
       body: HomeViewBody(profileProvider:profileProvider),
     );

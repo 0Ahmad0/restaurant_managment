@@ -69,6 +69,12 @@
   "rejected":"Rejected",
   "number_of_all_order":"Number of Order",
 
+
+  "Chef": "Chef",
+  "User": "User",
+  "Admin": "Admin",
+  "accounts": "Accounts",
+
   "toast": "",
   "toast_successfully_created": "Account successfully created",
   "toast_successfully_update": "Account successfully update",
