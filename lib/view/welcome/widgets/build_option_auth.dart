@@ -36,7 +36,6 @@ Widget buildOptionAuthApp(BuildContext context) {
         }, color: ColorManager.white,),
         const SizedBox(height: AppSize.s20,),
         ButtonApp(text: tr(LocaleKeys.supervisor), onPressed: () {
-
        var v = context.setLocale(Locale('ar'));
           Get.updateLocale(Locale('ar'));
        Get.to(()=>LoginView(typeUser: AppConstants.collectionAdmin,));

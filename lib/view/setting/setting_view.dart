@@ -2,6 +2,8 @@ import 'package:animate_icons/animate_icons.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:provider/provider.dart';
+import 'package:restaurant_managment/controller/theme_provider.dart';
 import 'package:sizer/sizer.dart';
 
 import '../../model/models.dart';
@@ -45,8 +47,8 @@ class SettingView extends StatelessWidget {
                       Theme.of(context).textTheme.bodyText1!.color,
                   iconColor: Theme.of(context).textTheme.bodyText1!.color,
                   tilePadding: EdgeInsets.only(
-                    right: false ? AppSize.s16 : 0,
-                    left: false ? 0 : AppSize.s16,
+                    right: !Advance.language ? AppSize.s16 : 0,
+                    left: !Advance.language ? 0 : AppSize.s16,
                   ),
                   title: ListTile(
                     title: Text(
@@ -57,7 +59,9 @@ class SettingView extends StatelessWidget {
                     ),
                     leading: Icon(Icons.language),
                     subtitle: Text(
-                      true ? tr(LocaleKeys.english) : tr(LocaleKeys.arabic),
+                      !Advance.language
+                          ? tr(LocaleKeys.english)
+                          : tr(LocaleKeys.arabic),
                       style: getLightStyle(
                         fontSize: 10.sp,
                           color: Theme.of(context).textTheme.bodyText1!.color),
@@ -76,7 +80,7 @@ class SettingView extends StatelessWidget {
                       leading: SizedBox(),
                       trailing: Switch(
                         activeColor: Theme.of(context).primaryColor,
-                        value: true,
+                        value: !Advance.language,
                         onChanged: (val) async {
                           await context.setLocale(Locale('en'));
                           Get.updateLocale(context.locale);
@@ -96,7 +100,7 @@ class SettingView extends StatelessWidget {
                       leading: SizedBox(),
                       trailing: Switch(
                         activeColor: Theme.of(context).primaryColor,
-                        value: !true,
+                        value: Advance.language,
                         onChanged: (val) async {
                           await context.setLocale(Locale('ar'));
                           // context.findAncestorStateOfType<_RestartWidgetState>().restartApp();
@@ -111,45 +115,56 @@ class SettingView extends StatelessWidget {
                 ),
               ),
             ),
-            Container(
-              margin: EdgeInsets.symmetric(vertical: AppSize.s8),
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(AppSize.s14),
-                  color: ColorManager.lightGray.withOpacity(.2)),
-              child: ListTile(
-                  title: Text(
-                    tr(LocaleKeys.theme),
-                    style: getRegularStyle(
-                        color: Theme.of(context).textTheme.bodyText1!.color,
-                        fontSize: 12.sp),
-                  ),
-                  subtitle: Text(
-                    true ? tr(LocaleKeys.dark_mode) : tr(LocaleKeys.light_mode),
-                    style: getLightStyle(
-                        fontSize: 10.sp,
-                        color: Theme.of(context).textTheme.bodyText1!.color),
-                  ),
-                  leading: Icon(Icons.color_lens_outlined),
-                  trailing: AnimateIcons(
-                    startIconColor:
-                        Theme.of(context).textTheme.bodyText1!.color,
-                    endIconColor: Theme.of(context).textTheme.bodyText1!.color,
-                    startIcon: true ? Icons.dark_mode : Icons.light_mode,
-                    endIcon: true ? Icons.dark_mode : Icons.light_mode,
-                    controller: c1,
-                    onStartIconPress: () {
-
-                      // appModel.darkTheme = !appModel.darkTheme;
-                       //return appModel.darkTheme;
-                      return false;
-                    },
-                    onEndIconPress: () {
-                      return true;
-                      // appModel.darkTheme = !appModel.darkTheme;
-                      // return appModel.darkTheme;
-                    },
-                  )),
-            ),
+            ChangeNotifierProvider<ThemeProvider>.value(
+              value: Provider.of<ThemeProvider>(context),
+              child: Consumer<ThemeProvider>(
+                builder: (_,value,child){
+                  return Container(
+                    margin: EdgeInsets.symmetric(vertical: AppSize.s8),
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(AppSize.s14),
+                        color: ColorManager.lightGray.withOpacity(.2)),
+                    child: ListTile(
+                        title: Text(
+                          tr(LocaleKeys.theme),
+                          style: getRegularStyle(
+                              color: Theme.of(context).textTheme.bodyText1!.color,
+                              fontSize: 12.sp),
+                        ),
+                        subtitle: Text(
+                          value.isDark ? tr(LocaleKeys.dark_mode) : tr(LocaleKeys.light_mode),
+                          style: getLightStyle(
+                              fontSize: 10.sp,
+                              color: Theme.of(context).textTheme.bodyText1!.color),
+                        ),
+                        leading: Icon(Icons.color_lens_outlined),
+                        trailing: AnimateIcons(
+                          startIconColor:
+                          Theme.of(context).textTheme.bodyText1!.color,
+                          endIconColor: Theme.of(context).textTheme.bodyText1!.color,
+                          startIcon: value.isDark ? Icons.dark_mode : Icons.light_mode,
+                          endIcon: value.isDark ? Icons.dark_mode : Icons.light_mode,
+                          controller: c1,
+                          onStartIconPress: () {
+                            value.isDark = !value.isDark;
+                            value.notifyListeners();
+                            return false;
+                            // appModel.darkTheme = !appModel.darkTheme;
+                            //return appModel.darkTheme;
+                            return false;
+                          },
+                          onEndIconPress: () {
+                            value.isDark = !value.isDark;
+                            value.notifyListeners();
+                            return true;
+                            // appModel.darkTheme = !appModel.darkTheme;
+                            // return appModel.darkTheme;
+                          },
+                        )),
+                  );
+                },
+              ),
+            )
 
             // Text(tr(LocaleKeys.language),style: getBoldStyle(color: ColorManager.redOTP),)
           ],

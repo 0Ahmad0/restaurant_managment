@@ -58,6 +58,7 @@ dependencies:
   cached_network_image: ^3.2.3
   animate_icons: ^2.0.0
   cloud_firestore:
+  linear_progress_bar: ^1.1.0
 
 
 flutter_icons:

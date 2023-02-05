@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:restaurant_managment/view/resourse/style_manager.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:sizer/sizer.dart';
 import '../../view/resourse/color_manager.dart';
 import '../../view/resourse/values_manager.dart';
 import 'sizer.dart';
@@ -36,7 +37,8 @@ class Const{
         textToast,
         context: context,
         animation:StyledToastAnimation.fadeScale,
-        textStyle: getRegularStyle(color: ColorManager.white)
+        textStyle: getRegularStyle(color: ColorManager.white,
+            fontSize: 14.sp)
     );
 
   }

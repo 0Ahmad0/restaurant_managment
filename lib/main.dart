@@ -4,9 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
-import 'package:restaurant_managment/controller/meal_provider.dart';
-import 'package:restaurant_managment/controller/order_provider.dart';
-import 'package:restaurant_managment/controller/utils/firebase.dart';
+import 'package:restaurant_managment/model/models.dart';
+import '/controller/meal_provider.dart';
+import '/controller/order_provider.dart';
+import '/controller/utils/firebase.dart';
 import '/firebase_options.dart';
 import '/view/resourse/theme_manager.dart';
 import '/view/splash/splash_view.dart';
@@ -15,6 +16,7 @@ import 'controller/account_provider.dart';
 import 'controller/auth_provider.dart';
 import 'controller/home_provider.dart';
 import 'controller/profile_provider.dart';
+import 'controller/theme_provider.dart';
 import 'translations/codegen_loader.g.dart';
 import 'package:provider/provider.dart';
 Future<void> main()async{
@@ -56,24 +58,29 @@ class MyApp extends StatelessWidget {
       ListenableProvider<ProfileProvider>(create: (_)=>ProfileProvider()),
       ListenableProvider<MealProvider>(create: (_)=>MealProvider()),
       ListenableProvider<OrderProvider>(create: (_)=>OrderProvider()),
+      ListenableProvider<ThemeProvider>(create: (_)=>ThemeProvider()),
       ListenableProvider<AccountProvider>(create: (_)=>AccountProvider()),
-
-
     ],
     child:
       Sizer(
         builder: (context, orientation, deviceType) {
-          return GetMaterialApp(
-          title: "Restaurant Management",
-          supportedLocales: context.supportedLocales,
-          localizationsDelegates: context.localizationDelegates,
-          // locale: Get.deviceLocale,
-          locale: Locale('ar'),
-          debugShowCheckedModeBanner: false,
-          theme: ThemeManager.myTheme,
-          // theme: getApplicationTheme(isDark: appProvider.darkTheme),
-          home:SplashView()
-        );
+          return ChangeNotifierProvider<ThemeProvider>.value(
+            value: Provider.of<ThemeProvider>(context),
+          child: Consumer<ThemeProvider>(
+            builder: (_,value,child){
+              return GetMaterialApp(
+                  title: "Restaurant Management",
+                  supportedLocales: context.supportedLocales,
+                  localizationsDelegates: context.localizationDelegates,
+                  locale: Advance.language?Locale('en'):Locale('ar'),
+                  debugShowCheckedModeBanner: false,
+                  theme:!value.isDark? ThemeManager.myTheme:ThemeData.dark(),
+                  // theme: getApplicationTheme(isDark: appProvider.darkTheme),
+                  home:SplashView()
+              );
+            },
+          ),
+          );
       }
     ));
   }

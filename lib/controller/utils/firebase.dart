@@ -1,17 +1,13 @@
 
 import 'dart:io';
 
-//import 'package:camera/camera.dart';
-//import 'package:ehtooa/app/view/resources/consts_manager.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-//import 'package:ehtooa/translations/locale_keys.g.dart';
 import 'package:firebase_storage/firebase_storage.dart';
-import 'package:flutter/services.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:path/path.dart';
-import 'package:restaurant_managment/model/models.dart' as model;
+import '/model/models.dart' as model;
 
 import '../../model/models.dart';
 import '../../model/utils/consts_manager.dart';
