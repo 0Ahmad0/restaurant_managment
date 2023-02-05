@@ -38,12 +38,16 @@ class SignupViewBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ShadowContainer(
+      color: Theme.of(context).cardColor,
+      shadowColor: Theme.of(context).primaryColor,
       padding: AppPadding.p50,
       margin: 0.0,
       child: SafeArea(
         child: Form(
           key: keyForm,
           child: ShadowContainer(
+            color: Theme.of(context).cardColor,
+            shadowColor: Theme.of(context).primaryColor,
             padding: AppPadding.p40,
             child: ListView(
               children: [

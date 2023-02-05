@@ -13,34 +13,53 @@ import '../../resourse/values_manager.dart';
 Widget buildOptionAuthApp(BuildContext context) {
   return Container(
     padding: EdgeInsets.symmetric(
-      horizontal: AppPadding.p40,
-      vertical: AppPadding.p40
-    ),
+        horizontal: AppPadding.p40, vertical: AppPadding.p40),
     width: double.infinity,
     decoration: BoxDecoration(
-        color: ColorManager.primaryColor,
+        color: Theme.of(context).primaryColor,
         borderRadius: BorderRadius.vertical(
-            top: Radius.circular(AppSize.s50),
-
-        )
-    ),
+          top: Radius.circular(AppSize.s50),
+        )),
     child: Column(
       children: [
-        ButtonApp(text: tr(LocaleKeys.waitr),
+        ButtonApp(
+          text: tr(
+            LocaleKeys.waitr,
+          ),
           onPressed: () {
-          Get.to(()=>LoginView(typeUser: AppConstants.collectionUser,));
-          }, color: ColorManager.white,),
-        const SizedBox(height: AppSize.s20,),
-        ButtonApp(text: tr(LocaleKeys.chef), onPressed: () {
-          Get.to(()=>LoginView(typeUser: AppConstants.collectionChef,));
-        }, color: ColorManager.white,),
-        const SizedBox(height: AppSize.s20,),
-        ButtonApp(text: tr(LocaleKeys.supervisor), onPressed: () {
-       var v = context.setLocale(Locale('ar'));
-          Get.updateLocale(Locale('ar'));
-       Get.to(()=>LoginView(typeUser: AppConstants.collectionAdmin,));
-        }, color: ColorManager.white,),
-
+            Get.to(() => LoginView(
+                  typeUser: AppConstants.collectionUser,
+                ));
+          },
+          color: Theme.of(context).cardColor,
+          textColor: Theme.of(context).textTheme.subtitle1!.color,
+        ),
+        const SizedBox(
+          height: AppSize.s20,
+        ),
+        ButtonApp(
+          text: tr(LocaleKeys.chef),
+          onPressed: () {
+            Get.to(() => LoginView(
+                  typeUser: AppConstants.collectionChef,
+                ));
+          },
+          color: Theme.of(context).cardColor,
+          textColor: Theme.of(context).textTheme.subtitle1!.color,
+        ),
+        const SizedBox(
+          height: AppSize.s20,
+        ),
+        ButtonApp(
+          text: tr(LocaleKeys.supervisor),
+          onPressed: () {
+            Get.to(() => LoginView(
+                  typeUser: AppConstants.collectionAdmin,
+                ));
+          },
+          color: Theme.of(context).cardColor,
+          textColor: Theme.of(context).textTheme.subtitle1!.color,
+        ),
       ],
     ),
   );

@@ -10,7 +10,6 @@ class ShowOrderDetailsView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      //ToDo : type here Order Number
       appBar: AppBar(title: Text('#${orders.orderId}'),),
       body: ShowOrderDetailsViewBody(orders:orders,index:index),
     );

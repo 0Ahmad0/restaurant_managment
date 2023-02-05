@@ -72,9 +72,8 @@ class MyApp extends StatelessWidget {
                   title: "Restaurant Management",
                   supportedLocales: context.supportedLocales,
                   localizationsDelegates: context.localizationDelegates,
-                  locale: Advance.language?Locale('en'):Locale('ar'),
                   debugShowCheckedModeBanner: false,
-                  theme:!value.isDark? ThemeManager.myTheme:ThemeData.dark(),
+                  theme:!value.isDark? ThemeManager.myTheme:ThemeManager.myThemeDark,
                   // theme: getApplicationTheme(isDark: appProvider.darkTheme),
                   home:SplashView()
               );

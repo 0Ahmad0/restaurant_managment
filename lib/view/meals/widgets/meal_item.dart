@@ -32,7 +32,7 @@ class MealItem extends StatelessWidget {
     OrderProvider orderProvider= Provider.of<OrderProvider>(context);
     return Card(
       elevation: AppSize.s12,
-      shadowColor: ColorManager.primaryColor.withOpacity(.5),
+      shadowColor: Theme.of(context).primaryColor.withOpacity(.5),
       margin: const EdgeInsets.symmetric(
           horizontal: AppMargin.m24, vertical: AppMargin.m8),
       child: Stack(
@@ -42,7 +42,7 @@ class MealItem extends StatelessWidget {
             title: Text(
               name,
               style: getBoldStyle(
-                  color: ColorManager.primaryColor, fontSize: 12.sp),
+                  color: Theme.of(context).textTheme.subtitle1!.color, fontSize: 12.sp),
             ),
             subtitle: Wrap(
               children: [
@@ -50,7 +50,7 @@ class MealItem extends StatelessWidget {
                   Text(
                     ingredients[i] + ' , ',
                     style: getLightStyle(
-                        color: ColorManager.secondaryColor, fontSize: 8.sp),
+                        color: Theme.of(context).textTheme.subtitle1!.color, fontSize: 8.sp),
                   ),
               ],
             ),
@@ -59,7 +59,7 @@ class MealItem extends StatelessWidget {
               TextSpan(
                   text: price,
                   style: getRegularStyle(
-                      color: ColorManager.black, fontSize: 8.sp)),
+                      color: Theme.of(context).textTheme.subtitle1!.color, fontSize: 8.sp)),
               TextSpan(
                   text: ' ' + tr(LocaleKeys.sr),
                   style:
@@ -70,7 +70,8 @@ class MealItem extends StatelessWidget {
           ),
           Positioned(
               bottom: 5.sp,
-              left: 5.sp,
+              left: !Advance.language?null: 5.sp,
+              right: Advance.language?null: 5.sp,
               child: GestureDetector(
                 onTap: (){
                //   print('add sucess');

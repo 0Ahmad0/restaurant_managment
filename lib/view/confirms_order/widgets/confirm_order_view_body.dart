@@ -195,11 +195,12 @@ class _ConfirmOrderViewBodyState extends State<ConfirmOrderViewBody> {
             ),
           ),
           Positioned(
-              left: 15.sp,
+              left: !Advance.language?null: 15.sp,
+              right: Advance.language?null: 15.sp,
               top: 0.sp,
               child: Container(
                 alignment: Alignment.center,
-                width: 20.w,
+                width: 12.w,
                 height: 20.h,
                 decoration: BoxDecoration(
                   color:(orderProvider.listOrdersExpired.listOrders[index].status.contains(StateOrder.rejected.name))?ColorManager.error: ColorManager.success,

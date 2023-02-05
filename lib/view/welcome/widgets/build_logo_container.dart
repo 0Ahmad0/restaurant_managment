@@ -10,14 +10,14 @@ Widget buildContainerLogo(BuildContext context) {
     height: SizerApp.getW(context) / 2,
     padding: const EdgeInsets.all(AppPadding.p8),
     decoration: BoxDecoration(
-        color: ColorManager.white,
+        color: Theme.of(context).cardColor,
         borderRadius: BorderRadius.circular(AppSize.s50),
         image: DecorationImage(
             image: AssetImage(AssetsManager.splashLogoIMG)
         ),
         boxShadow: [
           BoxShadow(
-            color: ColorManager.lightGray.withOpacity(.5),
+            color: Theme.of(context).primaryColor.withOpacity(.5),
             blurRadius: AppSize.s10,
           )
         ]

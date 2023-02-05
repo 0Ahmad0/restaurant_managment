@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:restaurant_managment/model/models.dart';
 import 'package:sizer/sizer.dart';
 import '/view/resourse/color_manager.dart';
 import 'font_manager.dart';
@@ -21,7 +22,8 @@ Map<int, Color> color = {
 
 class ThemeManager {
   static var myTheme = ThemeData(
-    fontFamily:FontManager.fontFamilyEN,
+    fontFamily:Advance.language?FontManager.fontFamilyAR:FontManager.fontFamilyEN,
+
     dividerColor: ColorManager.white,
     tabBarTheme: TabBarTheme(
       labelStyle: getRegularStyle(
@@ -73,5 +75,46 @@ class ThemeManager {
         elevation: AppSize.s4,
         titleTextStyle:
             getRegularStyle(color: ColorManager.white, fontSize: 18.0.sp)),
+  );
+  static var myThemeDark = ThemeData.dark().copyWith(
+    tabBarTheme: TabBarTheme(
+        labelStyle: getRegularStyle(
+            color: ColorManager.white,
+            fontSize: 12.sp
+        ),
+        unselectedLabelStyle: getRegularStyle(
+            color: ColorManager.black,
+            fontSize: 10.sp
+        )
+    ),
+    radioTheme: RadioThemeData(
+        fillColor: MaterialStateColor.resolveWith(
+                (states) => ColorManager.primaryColor)),
+    inputDecorationTheme: InputDecorationTheme(
+      enabledBorder: UnderlineInputBorder(
+          borderSide: BorderSide(color: ColorManager.lightGray)),
+      contentPadding: EdgeInsets.all(AppPadding.p40),
+      hintStyle: getRegularStyle(
+          color: ColorManager.lightGray, fontSize: FontSize.s24),
+      //label
+      labelStyle:
+      getMediumStyle(color: ColorManager.white, fontSize: FontSize.s24),
+      //error
+      errorStyle:
+      getRegularStyle(color: ColorManager.error, fontSize: FontSize.s24),
+    ),
+    elevatedButtonTheme: ElevatedButtonThemeData(
+      style: ElevatedButton.styleFrom(
+          textStyle: getRegularStyle(
+              color: ColorManager.white, fontSize: FontSize.s24),
+          minimumSize: Size(double.infinity, AppSize.s80),
+          shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(AppSize.s8))),
+    ),
+    appBarTheme: AppBarTheme(
+        centerTitle: true,
+        elevation: AppSize.s4,
+        titleTextStyle:
+        getRegularStyle(color: ColorManager.white, fontSize: 18.0.sp)),
   );
 }

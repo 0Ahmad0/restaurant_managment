@@ -8,6 +8,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 import 'package:restaurant_managment/controller/auth_provider.dart';
 import 'package:restaurant_managment/controller/profile_provider.dart';
+import 'package:restaurant_managment/model/models.dart';
 import 'package:restaurant_managment/translations/locale_keys.g.dart';
 import 'package:restaurant_managment/view/manager/widgets/textformfiled_app.dart';
 import 'package:restaurant_managment/view/resourse/color_manager.dart';
@@ -132,10 +133,11 @@ class _ProfileViewState extends State<ProfileViewBody> {
                       ),
                       Positioned(
                         bottom: 0,
-                        right: 0,
+                        right: !Advance.language?null: 0,
+                        left: Advance.language?null: 0,
                         child: Container(
-                          width: 12.w,
-                          height: 12.h,
+                          width: 10.w,
+                          height: 10.w,
                           decoration: BoxDecoration(
                               color: Theme.of(context).cardColor,
                               border: Border.all(
@@ -171,7 +173,9 @@ class _ProfileViewState extends State<ProfileViewBody> {
                   //     hintText: tr(LocaleKeys.password)
                   // ),
                   const SizedBox(height: AppSize.s20,),
-                  ButtonApp(text: tr(LocaleKeys.edit_password), onPressed: (){
+                  ButtonApp(
+                      text: tr(LocaleKeys.edit_password),
+                      onPressed: (){
                     final passwordController = TextEditingController();
                     final confirmPasswordController = TextEditingController();
                     final formKey = GlobalKey<FormState>();

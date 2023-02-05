@@ -42,7 +42,9 @@ class BuildMyOrderItem extends StatelessWidget {
     OrderProvider orderProvider= Provider.of<OrderProvider>(context);
     ProfileProvider profileProvider= Provider.of<ProfileProvider>(context);
     return ShadowContainer(
-      padding:  AppPadding.p10,
+      color: Theme.of(context).cardColor,
+      shadowColor: Theme.of(context).primaryColor,
+      padding:  AppPadding.p20,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
@@ -51,7 +53,9 @@ class BuildMyOrderItem extends StatelessWidget {
             children: [
               Text(
                 "${tr(LocaleKeys.order_id)} : ${numberOrder}",
-                style: getBoldStyle(color: ColorManager.black, fontSize: 14.sp),
+                style: getBoldStyle(
+                color: Theme.of(context).textTheme.subtitle1!.color
+                , fontSize: 14.sp),
               ),
               if(isOk)IconButton(onPressed: () {
                 double priceOrder=(double.parse(orderProvider.orders.orders.values.elementAt(index).meal!.price)*orderProvider.orders.orders.values.elementAt(index).count);
@@ -81,21 +85,21 @@ class BuildMyOrderItem extends StatelessWidget {
           ),
           Text(
             tr(LocaleKeys.number_of_dishes) + " : ${orderProvider.orders.orders.values.elementAt(index).count}",
-            style: getBoldStyle(color: ColorManager.black, fontSize: 14.sp),
+            style: getBoldStyle(color: Theme.of(context).textTheme.subtitle1!.color, fontSize: 14.sp),
           ),
           const SizedBox(
             height: AppSize.s20,
           ),
           Text(
             "${tr(LocaleKeys.order_table)} : ${orderProvider.orders.orderTable}",
-            style: getBoldStyle(color: ColorManager.black, fontSize: 14.sp),
+            style: getBoldStyle(color: Theme.of(context).textTheme.subtitle1!.color, fontSize: 14.sp),
           ),
           const SizedBox(
             height: AppSize.s20,
           ),
           Text(
             "${tr(LocaleKeys.order_time)} : ${DateFormat.yMEd().add_jm().format(timeOrder)}",
-            style: getBoldStyle(color: ColorManager.black, fontSize: 14.sp),
+            style: getBoldStyle(color: Theme.of(context).textTheme.subtitle1!.color, fontSize: 14.sp),
           ),
           TextFiledApp(
               controller: TextEditingController(text: notesOrder),
@@ -128,6 +132,8 @@ class BuildMyOrder extends StatelessWidget {
     OrderProvider orderProvider= Provider.of<OrderProvider>(context);
     ProfileProvider profileProvider= Provider.of<ProfileProvider>(context);
     return ShadowContainer(
+      color: Theme.of(context).cardColor,
+      shadowColor: Theme.of(context).primaryColor,
       padding:  AppPadding.p10,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -137,7 +143,7 @@ class BuildMyOrder extends StatelessWidget {
             children: [
               Text(
                 "${tr(LocaleKeys.order_id)} : ${orderProvider.listOrdersCurrent.listOrders[index].orderId}",
-                style: getBoldStyle(color: ColorManager.black, fontSize: 14.sp),
+                style: getBoldStyle(color: Theme.of(context).textTheme.subtitle1!.color, fontSize: 14.sp),
               ),
               if(isOk)IconButton(onPressed: () async {
                 if(profileProvider.user.typeUser.contains(AppConstants.collectionUser))
@@ -172,21 +178,21 @@ class BuildMyOrder extends StatelessWidget {
           ),
           Text(
             tr(LocaleKeys.number_of_dishes) + " : ${orderProvider.listOrdersCurrent.listOrders[index].orders.length}",
-            style: getBoldStyle(color: ColorManager.black, fontSize: 14.sp),
+            style: getBoldStyle(color: Theme.of(context).textTheme.subtitle1!.color, fontSize: 14.sp),
           ),
           const SizedBox(
             height: AppSize.s20,
           ),
           Text(
             "${tr(LocaleKeys.order_table)} : ${orderProvider.listOrdersCurrent.listOrders[index].orderTable}",
-            style: getBoldStyle(color: ColorManager.black, fontSize: 14.sp),
+            style: getBoldStyle(color: Theme.of(context).textTheme.subtitle1!.color, fontSize: 14.sp),
           ),
           const SizedBox(
             height: AppSize.s20,
           ),
           Text(
             "${tr(LocaleKeys.order_time)} : ${DateFormat.yMEd().add_jm().format(orderProvider.listOrdersCurrent.listOrders[index].orderTime)}",
-            style: getBoldStyle(color: ColorManager.black, fontSize: 14.sp),
+            style: getBoldStyle(color: Theme.of(context).textTheme.subtitle1!.color, fontSize: 14.sp),
           ),
           TextFormField(
             readOnly: true,
@@ -214,6 +220,8 @@ class BuildMyOrderExpired extends StatelessWidget {
     OrderProvider orderProvider= Provider.of<OrderProvider>(context);
     ProfileProvider profileProvider= Provider.of<ProfileProvider>(context);
     return ShadowContainer(
+      color: Theme.of(context).cardColor,
+      shadowColor: Theme.of(context).primaryColor,
       padding:  AppPadding.p10,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -223,7 +231,7 @@ class BuildMyOrderExpired extends StatelessWidget {
             children: [
               Text(
                 "${tr(LocaleKeys.order_id)} : ${orderProvider.listOrdersExpired.listOrders[index].orderId}",
-                style: getBoldStyle(color: ColorManager.black, fontSize: 14.sp),
+                style: getBoldStyle(color: Theme.of(context).textTheme.subtitle1!.color, fontSize: 14.sp),
               ),
               if(isOk)IconButton(onPressed: () async {
                 if(profileProvider.user.typeUser.contains(AppConstants.collectionUser))
@@ -258,21 +266,21 @@ class BuildMyOrderExpired extends StatelessWidget {
           ),
           Text(
             tr(LocaleKeys.number_of_dishes) + " : ${orderProvider.listOrdersExpired.listOrders[index].orders.length}",
-            style: getBoldStyle(color: ColorManager.black, fontSize: 14.sp),
+            style: getBoldStyle(color: Theme.of(context).textTheme.subtitle1!.color, fontSize: 14.sp),
           ),
           const SizedBox(
             height: AppSize.s20,
           ),
           Text(
             "${tr(LocaleKeys.order_table)} : ${orderProvider.listOrdersExpired.listOrders[index].orderTable}",
-            style: getBoldStyle(color: ColorManager.black, fontSize: 14.sp),
+            style: getBoldStyle(color: Theme.of(context).textTheme.subtitle1!.color, fontSize: 14.sp),
           ),
           const SizedBox(
             height: AppSize.s20,
           ),
           Text(
             "${tr(LocaleKeys.order_time)} : ${DateFormat.yMEd().add_jm().format(orderProvider.listOrdersExpired.listOrders[index].orderTime)}",
-            style: getBoldStyle(color: ColorManager.black, fontSize: 14.sp),
+            style: getBoldStyle(color: Theme.of(context).textTheme.subtitle1!.color, fontSize: 14.sp),
           ),
           TextFormField(
             readOnly: true,
@@ -303,6 +311,8 @@ class BuildMyOrderItem2 extends StatelessWidget {
     OrderProvider orderProvider= Provider.of<OrderProvider>(context);
     ProfileProvider profileProvider= Provider.of<ProfileProvider>(context);
     return ShadowContainer(
+      color: Theme.of(context).cardColor,
+      shadowColor: Theme.of(context).primaryColor,
       padding:  AppPadding.p10,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -312,7 +322,7 @@ class BuildMyOrderItem2 extends StatelessWidget {
             children: [
               Text(
                 "${tr(LocaleKeys.order_id)} : ${order.orderId}",
-                style: getBoldStyle(color: ColorManager.black, fontSize: 14.sp),
+                style: getBoldStyle(color: Theme.of(context).textTheme.subtitle1!.color, fontSize: 14.sp),
               ),
 
             ],
@@ -334,21 +344,21 @@ class BuildMyOrderItem2 extends StatelessWidget {
           ),
           Text(
             tr(LocaleKeys.number_of_dishes) + " : ${order.count}",
-            style: getBoldStyle(color: ColorManager.black, fontSize: 14.sp),
+            style: getBoldStyle(color: Theme.of(context).textTheme.subtitle1!.color, fontSize: 14.sp),
           ),
           const SizedBox(
             height: AppSize.s20,
           ),
           Text(
             "${tr(LocaleKeys.order_table)} : ${orderTable}",
-            style: getBoldStyle(color: ColorManager.black, fontSize: 14.sp),
+            style: getBoldStyle(color: Theme.of(context).textTheme.subtitle1!.color, fontSize: 14.sp),
           ),
           const SizedBox(
             height: AppSize.s20,
           ),
           Text(
             "${tr(LocaleKeys.order_time)} : ${order.orderTime}",
-            style: getBoldStyle(color: ColorManager.black, fontSize: 14.sp),
+            style: getBoldStyle(color: Theme.of(context).textTheme.subtitle1!.color, fontSize: 14.sp),
           ),
           TextFormField(
             readOnly: true,

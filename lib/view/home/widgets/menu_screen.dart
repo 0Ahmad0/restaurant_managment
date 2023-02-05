@@ -41,7 +41,7 @@ class _MenuScreenState extends State<MenuScreen> {
   Widget build(BuildContext context) {
 
     return Scaffold(
-      backgroundColor: ColorManager.primaryColor,
+      backgroundColor: Theme.of(context).primaryColor,
       body: Column(
         children: [
           ChangeNotifierProvider<ProfileProvider>.value(
@@ -50,27 +50,28 @@ class _MenuScreenState extends State<MenuScreen> {
                 builder: (context, value, child) =>
                     UserAccountsDrawerHeader(
                       decoration: BoxDecoration(
-                          color: ColorManager.white
+                          color: Theme.of(context).cardColor
                       ),
                       margin: EdgeInsets.zero,
                       accountName: Text(
                         value.user.name,
                         style: getRegularStyle(
-                            color: ColorManager.black,
+                            color: Theme.of(context).textTheme.subtitle1!.color,
                             fontSize: 10.sp
                         ),
                       ),
                       accountEmail: Text(
                         value.user.email,
                         style: getLightStyle(
-                            color: ColorManager.black,
+                            color: Theme.of(context).textTheme.subtitle1!.color,
                             fontSize: 8.sp
                         ),
                       ),
                       currentAccountPicture:
                       Container(
                           decoration: BoxDecoration(
-                            color: ColorManager.primaryColor,
+
+                            color: Theme.of(context).primaryColor,
                             shape: BoxShape.circle,
                           ),
                           child:ClipOval(
@@ -126,7 +127,6 @@ class _MenuScreenState extends State<MenuScreen> {
             onTap: (){
               Get.to(()=>ConfirmOrderView());
             },
-            icon: Icons.star_rate_outlined,
             title: tr(LocaleKeys.order_status),
           ),
           if(!widget.profileProvider.user.typeUser.contains(AppConstants.collectionAdmin))

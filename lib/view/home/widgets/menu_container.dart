@@ -26,10 +26,7 @@ class MenuContainer extends StatelessWidget {
             padding:const EdgeInsets.all(AppPadding.p8),
             alignment: Alignment.center,
             decoration: BoxDecoration(
-                color: ColorManager.primaryColor,
-                border: Border.all(
-                  color: ColorManager.white,
-                ),
+                color: Theme.of(context).primaryColor,
                 image: DecorationImage(
                   fit: BoxFit.fill,
                   colorFilter: ColorFilter.mode(

@@ -21,7 +21,7 @@ final ProfileProvider profileProvider;
   Widget build(BuildContext context) {
     MealProvider mealProvider= Provider.of<MealProvider>(context);
     return ZoomDrawer(
-      menuBackgroundColor: ColorManager.primaryColor,
+      menuBackgroundColor: Theme.of(context).primaryColor,
       controller: zoomController,
       menuScreen:  MenuScreen(profileProvider:profileProvider),
       mainScreen:  (profileProvider.user.typeUser.contains(AppConstants.collectionAdmin))?

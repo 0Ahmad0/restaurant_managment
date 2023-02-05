@@ -9,12 +9,12 @@ class CustomListTile extends StatelessWidget {
       this.onTap,
       required this.title,
        this.subtitle,
-      required this.icon})
+       this.icon})
       : super(key: key);
   final VoidCallback? onTap;
   final String title;
   final String? subtitle;
-  final IconData icon;
+  final IconData? icon;
 
   @override
   Widget build(BuildContext context) {

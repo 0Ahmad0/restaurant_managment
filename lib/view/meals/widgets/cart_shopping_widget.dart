@@ -29,7 +29,7 @@ class _CartShoppingWidgetState extends State<CartShoppingWidget> {
       width: double.infinity,
       padding: const EdgeInsets.all(AppSize.s40),
       decoration: BoxDecoration(
-          color: ColorManager.white,
+          color: Theme.of(context).cardColor,
           borderRadius: BorderRadius.vertical(
               top: Radius.circular(AppSize.s40)
           )
@@ -45,9 +45,11 @@ class _CartShoppingWidgetState extends State<CartShoppingWidget> {
               Container(
                 margin: const EdgeInsets.all(AppMargin.m8),
                 child: Chip(
+                  backgroundColor: Theme.of(context).primaryColor,
                   label: Text('${FunctionHelperViewProvider.chooseNameByLanguage(ar:value.orders.orders.values.elementAt(index).meal?.mealNameAr, en:value.orders.orders.values.elementAt(index).meal?.mealNameEn )
                   } ${value.orders.orders.values.elementAt(index).count}',/*${index + 1}*/
-                    style: getRegularStyle(color: ColorManager.black,
+                    style: getRegularStyle(
+                        color:Theme.of(context).textTheme.subtitle1!.color,
                         fontSize: 12.sp
                     ),),
                   onDeleted: () {
