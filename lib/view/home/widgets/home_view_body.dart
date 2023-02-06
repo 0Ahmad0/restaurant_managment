@@ -26,9 +26,9 @@ final ProfileProvider profileProvider;
       isRtl: context.locale == Locale('ar')?true:false,
       menuBackgroundColor: Theme.of(context).primaryColor,
       controller: zoomController,
-      menuScreen:  MenuScreen(profileProvider:profileProvider),
+      menuScreen:  (profileProvider.user.typeUser.contains(AppConstants.collectionAdmin))?SizedBox():MenuScreen(profileProvider:profileProvider),
       mainScreen:  (profileProvider.user.typeUser.contains(AppConstants.collectionAdmin))?
-      ShowAccountsView()
+          MenuScreen(profileProvider: profileProvider)
           :MainScreen(mealProvider:mealProvider),
       borderRadius: AppSize.s24,
       showShadow: true,

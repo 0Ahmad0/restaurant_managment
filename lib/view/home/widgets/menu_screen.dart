@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 import 'package:restaurant_managment/model/utils/const.dart';
 import 'package:restaurant_managment/model/utils/consts_manager.dart';
 import 'package:restaurant_managment/model/utils/local/storage.dart';
+import 'package:restaurant_managment/view/admin/show_accounts/show_accounts_view.dart';
 import 'package:restaurant_managment/view/welcome/welcome_view.dart';
 
 import '../../admin/add_meal/add_meal_view.dart';
@@ -177,6 +178,19 @@ class _MenuScreenState extends State<MenuScreen> {
             title: tr(LocaleKeys.setting),
           ),
           const Divider(
+            thickness: 1.5,
+          ),
+          if(widget.profileProvider.user.typeUser.contains(AppConstants.collectionAdmin))
+            CustomListTile(
+              onTap: (){
+                Get.to(()=>ShowAccountsView());
+              },
+              icon: Icons.star_rate,
+              title: tr(LocaleKeys.rate),
+            ),
+            if(widget.profileProvider.user.typeUser.contains(AppConstants.collectionAdmin))
+
+            const Divider(
             thickness: 1.5,
           ),
          CustomListTile(
