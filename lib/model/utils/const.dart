@@ -7,6 +7,8 @@ import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:restaurant_managment/view/resourse/style_manager.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:sizer/sizer.dart';
+import '../../translations/locale_keys.g.dart';
+import '../../view/manager/widgets/button_app.dart';
 import '../../view/resourse/color_manager.dart';
 import '../../view/resourse/values_manager.dart';
 import 'sizer.dart';
@@ -66,7 +68,7 @@ class Const{
               children: [
                 const SizedBox(height: AppSize.s30,),
                 Text(
-                  "tr(LocaleKeys.rate)",
+                  tr(LocaleKeys.rate),
                   style: getRegularStyle(
                       color: Theme.of(context).textTheme.bodyText1!.color,
                       fontSize: SizerApp.getW(context) * 0.045
@@ -112,13 +114,14 @@ class Const{
                     }
                 ),
                 const SizedBox(height: AppSize.s20,),
-                // ButtonApp(
-                //   text: tr(LocaleKeys.ok),
-                //   onTap: (){
-                //     Navigator.pop(context);
-                //     Const.TOAST(context,textToast: tr(LocaleKeys.thanks_for_rate));
-                //   },
-                // )
+                ButtonApp(
+                  text: tr(LocaleKeys.done),
+                  onPressed: (){
+                    Navigator.pop(context);
+                    Const.TOAST(context,
+                        textToast: tr(LocaleKeys.thanks_for_rate));
+                  },
+                )
               ],
             ),
           ),

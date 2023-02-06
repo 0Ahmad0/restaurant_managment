@@ -89,5 +89,7 @@ abstract class  LocaleKeys {
   static const toast_Bad_data_fetch = 'toast_Bad_data_fetch';
   static const toast_time_out = 'toast_time_out';
   static const toast_given_empty = 'toast_given_empty';
+  static const rate = 'rate';
+  static const thanks_for_rate = 'thanks_for_rate';
 
 }

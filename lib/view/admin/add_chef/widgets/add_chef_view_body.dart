@@ -3,12 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
-import 'package:restaurant_managment/translations/locale_keys.g.dart';
-import 'package:restaurant_managment/view/manager/widgets/ShadowContainer.dart';
-import 'package:restaurant_managment/view/manager/widgets/button_app.dart';
-import 'package:restaurant_managment/view/manager/widgets/textformfiled_app.dart';
-import 'package:restaurant_managment/view/resourse/assets_manager.dart';
-import 'package:restaurant_managment/view/resourse/values_manager.dart';
+import '/translations/locale_keys.g.dart';
+import '/view/manager/widgets/ShadowContainer.dart';
+import '/view/manager/widgets/button_app.dart';
+import '/view/manager/widgets/textformfiled_app.dart';
+import '/view/resourse/assets_manager.dart';
+import '/view/resourse/values_manager.dart';
 import 'package:sizer/sizer.dart';
 
 import '../../../../controller/auth_provider.dart';

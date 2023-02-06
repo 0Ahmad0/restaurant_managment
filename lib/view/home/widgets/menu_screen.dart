@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:restaurant_managment/model/utils/const.dart';
 import 'package:restaurant_managment/model/utils/consts_manager.dart';
 import 'package:restaurant_managment/model/utils/local/storage.dart';
 import 'package:restaurant_managment/view/welcome/welcome_view.dart';
@@ -127,6 +128,7 @@ class _MenuScreenState extends State<MenuScreen> {
             onTap: (){
               Get.to(()=>ConfirmOrderView());
             },
+            icon: Icons.fastfood_sharp,
             title: tr(LocaleKeys.order_status),
           ),
           if(!widget.profileProvider.user.typeUser.contains(AppConstants.collectionAdmin))
@@ -173,6 +175,16 @@ class _MenuScreenState extends State<MenuScreen> {
             },
             icon: Icons.settings,
             title: tr(LocaleKeys.setting),
+          ),
+          const Divider(
+            thickness: 1.5,
+          ),
+          CustomListTile(
+            onTap: (){
+              Const.SHOWRATEDIALOOG(context);
+            },
+            icon: Icons.star_rate,
+            title: tr(LocaleKeys.rate),
           ),
           const Divider(
             thickness: 1.5,

@@ -47,8 +47,8 @@ class SettingView extends StatelessWidget {
                       Theme.of(context).textTheme.bodyText1!.color,
                   iconColor: Theme.of(context).textTheme.bodyText1!.color,
                   tilePadding: EdgeInsets.only(
-                    right: !Advance.language ? AppSize.s16 : 0,
-                    left: !Advance.language ? 0 : AppSize.s16,
+                    right: context.locale == Locale('en') ? AppSize.s16 : 0,
+                    left: context.locale == Locale('en') ? 0 : AppSize.s16,
                   ),
                   title: ListTile(
                     title: Text(
@@ -59,7 +59,7 @@ class SettingView extends StatelessWidget {
                     ),
                     leading: Icon(Icons.language),
                     subtitle: Text(
-                      !Advance.language
+                      context.locale == Locale('en')
                           ? tr(LocaleKeys.english)
                           : tr(LocaleKeys.arabic),
                       style: getLightStyle(
@@ -80,7 +80,7 @@ class SettingView extends StatelessWidget {
                       leading: SizedBox(),
                       trailing: Switch(
                         activeColor: Theme.of(context).primaryColor,
-                        value: !Advance.language,
+                        value:  context.locale == Locale('en')?true:false,
                         onChanged: (val) async {
                           await context.setLocale(Locale('en'));
                           Get.updateLocale(context.locale);
@@ -100,7 +100,7 @@ class SettingView extends StatelessWidget {
                       leading: SizedBox(),
                       trailing: Switch(
                         activeColor: Theme.of(context).primaryColor,
-                        value: Advance.language,
+                        value:  context.locale == Locale('ar')?true:false,
                         onChanged: (val) async {
                           await context.setLocale(Locale('ar'));
                           // context.findAncestorStateOfType<_RestartWidgetState>().restartApp();

@@ -6,6 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:restaurant_managment/controller/account_provider.dart';
 import 'package:restaurant_managment/view/resourse/color_manager.dart';
+import 'package:restaurant_managment/view/resourse/style_manager.dart';
+import 'package:sizer/sizer.dart';
 
 import '../../../../controller/profile_provider.dart';
 
@@ -59,10 +61,18 @@ class BuildShowAccountItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ShadowContainer(
+      color: Theme.of(context).cardColor,
+      shadowColor: Theme.of(context).primaryColor,
       child: ListTile(
         contentPadding: EdgeInsets.zero,
-        title: Text(user.name),
-        subtitle: Text(tr(user.typeUser)),
+        title: Text(user.name,style: getRegularStyle(
+          color: Theme.of(context).textTheme.subtitle1!.color,
+          fontSize: 14.sp
+        ),),
+        subtitle: Text(tr(user.typeUser),style: getRegularStyle(
+            color: Theme.of(context).textTheme.subtitle1!.color,
+            fontSize: 10.sp
+        ),),
         ///TODO @hairi add icon button
         trailing: Icon(Icons.circle_rounded,color: ColorManager.success,),
       ),

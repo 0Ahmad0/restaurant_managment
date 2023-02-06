@@ -47,6 +47,12 @@ class _MainScreenState extends State<MainScreen> {
   }
   @override
   Widget build(BuildContext context) {
+    Map<String, dynamic> images = {
+      "0": [AssetsManager.drinksIMG, tr(LocaleKeys.drink)],
+      "1": [AssetsManager.mainDishesIMG, tr(LocaleKeys.main_dishes)],
+      "2": [AssetsManager.appetizerIMG, tr(LocaleKeys.appetizer)],
+      "3": [AssetsManager.saladIMG, tr(LocaleKeys.salad)],
+    };
     return Scaffold(
       floatingActionButtonLocation: FloatingActionButtonLocation.miniCenterFloat,
       floatingActionButton:
@@ -85,7 +91,7 @@ class _MainScreenState extends State<MainScreen> {
                 Const.SHOWLOADINGINDECATOR();
                 widget.mealProvider.listMeals =Meals.fromJson(snapshot.data?.docs);
                 widget.mealProvider.processMeals();
-                return buildGrid(context);
+                return buildGrid(context,images);
                 /// }));
               } else {
                 return const Text('Empty data');
@@ -97,17 +103,17 @@ class _MainScreenState extends State<MainScreen> {
           }),
     );
   }
-  buildGrid(context){
+  buildGrid(context,map){
     return GridView.builder(
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2, childAspectRatio: .75),
         itemCount: ConstApp.images.length,
         itemBuilder: (_, index) => MenuContainer(
-          map: ConstApp.images,
+          map: map,
           index: index,
           onTap: ()=>(widget.mealProvider.mapMeals[index.toString()].length>0)?Get.to(()=>MealsView(
-            title: ConstApp.images[index.toString()][1],
-            image: ConstApp.images[index.toString()][0],
+            title: map[index.toString()][1],
+            image: map[index.toString()][0],
             meals:widget.mealProvider.mapMeals[index.toString()],
           )): Const.TOAST(context,textToast: tr(LocaleKeys.no_dishes_category)),
         ));

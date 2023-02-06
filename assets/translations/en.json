@@ -88,6 +88,8 @@
   "toast_account_invalid":"Account is invalid",
   "toast_Bad_data_fetch":"Internal Error: Bad data fetch",
   "toast_time_out":"time out",
-  "toast_given_empty":"Given String is empty or null"
+  "toast_given_empty":"Given String is empty or null",
+  "rate": "Rate",
+  "thanks_for_rate": "Thanks for rate"
 
 }

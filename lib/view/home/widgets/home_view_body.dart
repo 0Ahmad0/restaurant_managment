@@ -4,6 +4,7 @@ import 'package:flutter_zoom_drawer/config.dart';
 import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
 import 'package:provider/provider.dart';
 import 'package:restaurant_managment/controller/profile_provider.dart';
+import 'package:restaurant_managment/model/models.dart';
 
 import '../../../controller/meal_provider.dart';
 import '../../../model/utils/consts_manager.dart';
@@ -21,6 +22,8 @@ final ProfileProvider profileProvider;
   Widget build(BuildContext context) {
     MealProvider mealProvider= Provider.of<MealProvider>(context);
     return ZoomDrawer(
+
+      isRtl: context.locale == Locale('ar')?true:false,
       menuBackgroundColor: Theme.of(context).primaryColor,
       controller: zoomController,
       menuScreen:  MenuScreen(profileProvider:profileProvider),

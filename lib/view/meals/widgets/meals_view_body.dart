@@ -44,9 +44,9 @@ class MealsViewBody extends StatelessWidget {
               itemCount: meals.length,
               itemBuilder: (_, index) {
                 return MealItem(
-                  name: (Advance.language)? meals[index].mealNameAr:meals[index].mealNameEn,
+                  name: (context.locale == Locale('ar'))? meals[index].mealNameAr:meals[index].mealNameEn,
                   price: meals[index].price,//ConstApp.meals[index].price,
-                  ingredients:[(Advance.language)? meals[index].mealDetailsAr:meals[index].mealDetailsEn],
+                  ingredients:[(context.locale == Locale('ar'))? meals[index].mealDetailsAr:meals[index].mealDetailsEn],
                   meal:meals[index]
                 );
               },

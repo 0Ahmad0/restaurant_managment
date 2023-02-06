@@ -77,6 +77,7 @@ class ThemeManager {
             getRegularStyle(color: ColorManager.white, fontSize: 18.0.sp)),
   );
   static var myThemeDark = ThemeData.dark().copyWith(
+
     tabBarTheme: TabBarTheme(
         labelStyle: getRegularStyle(
             color: ColorManager.white,
@@ -87,9 +88,6 @@ class ThemeManager {
             fontSize: 10.sp
         )
     ),
-    radioTheme: RadioThemeData(
-        fillColor: MaterialStateColor.resolveWith(
-                (states) => ColorManager.primaryColor)),
     inputDecorationTheme: InputDecorationTheme(
       enabledBorder: UnderlineInputBorder(
           borderSide: BorderSide(color: ColorManager.lightGray)),

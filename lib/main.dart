@@ -31,6 +31,7 @@ Future<void> main()async{
   await EasyLocalization.ensureInitialized();
   runApp(
     EasyLocalization(
+      saveLocale: true,
       path: 'assets/translations',
       supportedLocales: [
         Locale("en"),
@@ -73,6 +74,7 @@ class MyApp extends StatelessWidget {
                   supportedLocales: context.supportedLocales,
                   localizationsDelegates: context.localizationDelegates,
                   debugShowCheckedModeBanner: false,
+                  locale: context.locale,
                   theme:!value.isDark? ThemeManager.myTheme:ThemeManager.myThemeDark,
                   // theme: getApplicationTheme(isDark: appProvider.darkTheme),
                   home:SplashView()

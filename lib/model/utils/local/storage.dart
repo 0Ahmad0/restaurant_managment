@@ -21,7 +21,7 @@ class AppStorage {
       Advance.token = await storageRead(key: AppConstants.idKEY);
     }
     if (!_storage.hasData(AppConstants.languageKEY)) {
-      storageWrite(key: AppConstants.languageKEY, value: true);
+      storageWrite(key: AppConstants.languageKEY, value: false);
     } else {
       Advance.language = await storageRead(key: AppConstants.languageKEY);
     }

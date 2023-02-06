@@ -70,8 +70,8 @@ class MealItem extends StatelessWidget {
           ),
           Positioned(
               bottom: 5.sp,
-              left: !Advance.language?null: 5.sp,
-              right: Advance.language?null: 5.sp,
+              left: context.locale == Locale('en')?null: 5.sp,
+              right: context.locale == Locale('ar')?null: 5.sp,
               child: GestureDetector(
                 onTap: (){
                //   print('add sucess');

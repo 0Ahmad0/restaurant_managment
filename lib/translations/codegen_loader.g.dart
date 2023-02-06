@@ -102,7 +102,9 @@ class CodegenLoader extends AssetLoader{
   "toast_account_invalid": "الحساب غير صحيح",
   "toast_Bad_data_fetch": "خطأ داخلي: جلب سيء للبيانات",
   "toast_time_out": "خطأ في الاتصال",
-  "toast_given_empty": "القيمة المعطاء فارغة"
+  "toast_given_empty": "القيمة المعطاء فارغة",
+  "rate": "التقييم",
+  "thanks_for_rate": "شكرا لك على التقييم"
 };
 static const Map<String,dynamic> en = {
   "waitr": "Waitr",
@@ -191,7 +193,9 @@ static const Map<String,dynamic> en = {
   "toast_account_invalid": "Account is invalid",
   "toast_Bad_data_fetch": "Internal Error: Bad data fetch",
   "toast_time_out": "time out",
-  "toast_given_empty": "Given String is empty or null"
+  "toast_given_empty": "Given String is empty or null",
+  "rate": "Rate",
+  "thanks_for_rate": "Thanks for rate"
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"ar": ar, "en": en};
 }

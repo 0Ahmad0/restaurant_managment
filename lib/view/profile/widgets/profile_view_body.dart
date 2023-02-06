@@ -133,8 +133,8 @@ class _ProfileViewState extends State<ProfileViewBody> {
                       ),
                       Positioned(
                         bottom: 0,
-                        right: !Advance.language?null: 0,
-                        left: Advance.language?null: 0,
+                        right: context.locale == Locale('en')?null: 0,
+                        left: context.locale == Locale('ar')?null: 0,
                         child: Container(
                           width: 10.w,
                           height: 10.w,

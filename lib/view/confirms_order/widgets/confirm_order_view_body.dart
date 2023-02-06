@@ -195,8 +195,8 @@ class _ConfirmOrderViewBodyState extends State<ConfirmOrderViewBody> {
             ),
           ),
           Positioned(
-              left: !Advance.language?null: 15.sp,
-              right: Advance.language?null: 15.sp,
+              left: context.locale == Locale('en')?null: 15.sp,
+              right: context.locale == Locale('ar')?null: 15.sp,
               top: 0.sp,
               child: Container(
                 alignment: Alignment.center,
@@ -212,7 +212,7 @@ class _ConfirmOrderViewBodyState extends State<ConfirmOrderViewBody> {
                   :tr(LocaleKeys.done),
                   style: getRegularStyle(
                       color: ColorManager.white,
-                      fontSize: 14.sp
+                      fontSize: 12.sp
                   ),
                 ),
               ))
