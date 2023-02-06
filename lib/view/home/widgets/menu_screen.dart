@@ -179,16 +179,6 @@ class _MenuScreenState extends State<MenuScreen> {
           const Divider(
             thickness: 1.5,
           ),
-          CustomListTile(
-            onTap: (){
-              Const.SHOWRATEDIALOOG(context);
-            },
-            icon: Icons.star_rate,
-            title: tr(LocaleKeys.rate),
-          ),
-          const Divider(
-            thickness: 1.5,
-          ),
          CustomListTile(
            onTap: (){
              AppStorage.depose();
